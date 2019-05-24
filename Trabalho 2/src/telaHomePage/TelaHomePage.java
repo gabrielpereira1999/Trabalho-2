@@ -5,6 +5,11 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dados.Dados;
+import telaHddSdd.TelaHddSdd;
+import telaMemoriaRam.TelaMemoriaRam;
+import telaPerifericos.TelaPerifericos;
+import telaPlacaVideo.TelaPlacaVideo;
+import telaProcessador.TelaProcessador;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -13,6 +18,8 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class TelaHomePage extends JFrame {
@@ -154,6 +161,47 @@ public class TelaHomePage extends JFrame {
 		btnPaginaDoProduto3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPaginaDoProduto3.setBounds(591, 499, 169, 23);
 		contentPane.add(btnPaginaDoProduto3);
+		
+		btnPlacaDeVdeo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPlacaVideo f = new TelaPlacaVideo();
+				f.setVisible(true);
+			}
+		});
+		
+		btnProcessador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProcessador f = new TelaProcessador();
+				f.setVisible(true);
+			}
+		});
+		
+		btnHddSsd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaHddSdd f = new TelaHddSdd();
+				f.setVisible(true);
+			}
+		});
+		
+		btnMemriaRam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaMemoriaRam f = new TelaMemoriaRam();
+				f.setVisible(true);
+			}
+		});
+		
+		btnPerifricos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPerifericos f = new TelaPerifericos();
+				f.setVisible(true);
+			}
+		});
+		
 	}
 
 }

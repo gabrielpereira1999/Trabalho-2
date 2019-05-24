@@ -3,6 +3,8 @@ package telaMemoriaRam;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,7 +14,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import telaHddSdd.TelaHddSdd;
 import telaHomePage.TelaHomePage;
+import telaPerifericos.TelaPerifericos;
+import telaPlacaVideo.TelaPlacaVideo;
+import telaProcessador.TelaProcessador;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
 public class TelaMemoriaRam extends JFrame {
@@ -93,6 +101,56 @@ contentPane.setLayout(null);
 		btnPerifricos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPerifricos.setBounds(618, 131, 142, 30);
 		contentPane.add(btnPerifricos);
+		
+		btnPlacaDeVdeo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPlacaVideo f = new TelaPlacaVideo();
+				f.setVisible(true);
+			}
+		});
+		
+		btnProcessador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProcessador f = new TelaProcessador();
+				f.setVisible(true);
+			}
+		});
+		
+		btnHddSsd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaHddSdd f = new TelaHddSdd();
+				f.setVisible(true);
+			}
+		});
+		
+		btnPerifricos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPerifericos f = new TelaPerifericos();
+				f.setVisible(true);
+			}
+		});
+		
+		lblMonster.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				setVisible(false);
+				TelaHomePage f = new TelaHomePage();
+				f.setVisible(true);
+			}
+		});
+		
+		lblInformtica.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				setVisible(false);
+				TelaHomePage f = new TelaHomePage();
+				f.setVisible(true);
+			}
+		});
 	}
 
 }
