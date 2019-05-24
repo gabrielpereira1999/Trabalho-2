@@ -3,24 +3,31 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import acao.Acao;
 import beans.Produtos;
 
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -38,6 +45,8 @@ public class TelaAdministrador extends JFrame {
 	private JTextArea txtDescricao = new JTextArea();
 	private JSpinner spinnerQuantidade = new JSpinner();
 	private static int codigoProduto;
+	private Image imagem;
+	private File imagemEscolhida;
 	
 	private void limparCampos() {
 		
@@ -78,28 +87,6 @@ public class TelaAdministrador extends JFrame {
 		contentPane.add(lblValor);
 		
 		txtValor = new JTextField();
-		txtValor.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent e) {
-				
-				// Converter caractere em ASCII
-				int caractere = (int) e.getKeyChar();
-
-				if (caractere != 8) {
-
-					// Obter o valor digitado
-					String texto = txtValor.getText();
-
-					// Validar caractere
-					if (caractere < 48 || caractere > 57) {
-						txtValor.setText(texto.substring(0, texto.length() - 1));
-					}
-					
-				}
-				
-			}
-			
-		});
 		txtValor.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtValor.setColumns(10);
 		txtValor.setBounds(198, 44, 75, 20);
@@ -114,7 +101,6 @@ public class TelaAdministrador extends JFrame {
 		comboDepartamento.setBounds(10, 114, 150, 20);
 		contentPane.add(comboDepartamento);
 		
-		comboDepartamento.addItem("");
 		comboDepartamento.addItem("Placa de Vídeo");
 		comboDepartamento.addItem("Processador");
 		comboDepartamento.addItem("HDD/SSD");
@@ -153,56 +139,11 @@ public class TelaAdministrador extends JFrame {
 		scrollPaneProdutos.setViewportView(tableProdutos);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//Instânciar obj
-				Produtos p = new Produtos();
-				p.setProduto(txtProduto.getText());
-				p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
-				p.setValor(Double.parseDouble(txtValor.getText()));
-				p.setDepartamento(comboDepartamento.getSelectedItem().toString());
-				p.setDescricao(txtDescricao.getText());
-				
-				//Realizar cadastro
-				a.cadastrarProdutos(p);
-				
-				//Atualizar
-				tableProdutos.setModel(a.selecionarProdutos());
-
-				//Limpar campos
-				limparCampos();
-				
-			}
-			
-		});
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCadastrar.setBounds(10, 359, 175, 25);
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
-		btnAlterar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				//Instânciar obj
-				Produtos p = new Produtos();
-				p.setProduto(txtProduto.getText());
-				p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
-				p.setValor(Double.parseDouble(txtValor.getText()));
-				p.setDepartamento(comboDepartamento.getSelectedItem().toString());
-				p.setDescricao(txtDescricao.getText());
-				
-				//Realizar cadastro
-				a.alterarProdutos(p);
-				
-				//Atualizar
-				tableProdutos.setModel(a.selecionarProdutos());
-
-				//Limpar campos
-				limparCampos();
-				
-			}
-		});
 		btnAlterar.setEnabled(false);
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAlterar.setBounds(195, 359, 175, 25);
@@ -219,6 +160,10 @@ public class TelaAdministrador extends JFrame {
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.setBounds(565, 359, 175, 25);
 		contentPane.add(btnCancelar);
+		
+		JButton btnEscolherImagem = new JButton("Escolher Imagem");
+		btnEscolherImagem.setBounds(137, 156, 136, 23);
+		contentPane.add(btnEscolherImagem);
 		
 		tableProdutos.addMouseListener(new MouseAdapter() {
 			@Override
@@ -246,6 +191,84 @@ public class TelaAdministrador extends JFrame {
 			}
 		});	
 		
+		txtValor.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				// Converter caractere em ASCII
+				int caractere = (int) e.getKeyChar();
+
+				if (caractere != 8) {
+
+					// Obter o valor digitado
+					String texto = txtValor.getText();
+
+					// Validar caractere
+					if (caractere < 48 || caractere > 57) {
+						txtValor.setText(texto.substring(0, texto.length() - 1));
+					}
+					
+				}
+				
+			}
+			
+		});
+		
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				int indice = tableProdutos.getSelectedRow();
+				
+				//Instânciar obj
+				Produtos p = new Produtos();
+				p.setProduto(txtProduto.getText());
+				p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
+				p.setValor(Double.parseDouble(txtValor.getText()));
+				p.setDepartamento(comboDepartamento.getSelectedItem().toString());
+				p.setDescricao(txtDescricao.getText());
+				
+				//Realizar cadastro
+				a.alterarProdutos(p, indice);
+				
+				//Atualizar
+				tableProdutos.setModel(a.selecionarProdutos());
+
+				//Limpar campos
+				limparCampos();
+				
+			}
+		});
+		
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Instânciar obj
+				Produtos p = new Produtos();
+				p.setProduto(txtProduto.getText());
+				p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
+				p.setValor(Double.parseDouble(txtValor.getText()));
+				p.setDepartamento(comboDepartamento.getSelectedItem().toString());
+				p.setDescricao(txtDescricao.getText());
+				p.setFoto(imagem);
+				
+				//Realizar cadastro
+				a.cadastrarProdutos(p);
+				
+				//Atualizar
+				tableProdutos.setModel(a.selecionarProdutos());
+
+				//Limpar campos
+				limparCampos();
+				
+			}
+			
+		});
+		
+		btnEscolherImagem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				imagem = a.selecionaImagem();
+			}
+		});
+		
 	}
-	
 }

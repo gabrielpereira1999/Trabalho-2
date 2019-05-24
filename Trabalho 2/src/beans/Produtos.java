@@ -10,6 +10,12 @@ public class Produtos {
 	Image foto;
 	
 	
+	public Image getFoto() {
+		return foto;
+	}
+	public void setFoto(Image foto) {
+		this.foto = foto;
+	}
 	public String getProduto() {
 		return produto;
 	}

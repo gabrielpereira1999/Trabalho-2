@@ -1,8 +1,15 @@
 package acao;
 
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-import beans.Produtos;
 import beans.Produtos;
 import dados.Dados;
 
@@ -14,27 +21,12 @@ public class Acao {
 	}
 
 	// Alterar Produtos
-	private void alterarProdutos(int indice) {
+	public void alterarProdutos(Produtos p, int i) {
 
-		// Obter dados da Produtos selecionada
-		String produto = Dados.arrayProdutos.get(indice).getProduto();
-		String departamento = Dados.arrayProdutos.get(indice).getDepartamento();
-		String descricao = Dados.arrayProdutos.get(indice).getDescricao();
-		int quantidade = Dados.arrayProdutos.get(indice).getQuantidade();
-		double valor = Dados.arrayProdutos.get(indice).getValor();
-		quantidade++;
-
-		// Criar um objeto da classe Produtos com os dados atualizados
-		Produtos p = new Produtos();
-		p.setProduto(produto);
-		p.setQuantidade(quantidade);
-		p.setValor(valor);
-		p.setDepartamento(departamento);
-		p.setDescricao(descricao);
-
-		Dados.arrayProdutos.set(indice, p);
+		Dados.arrayProdutos.set(i, p);
 	}
-	// Selecionar Produtoss
+
+	// Selecionar Produtos
 	public DefaultTableModel selecionarProdutos() {
 
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -46,15 +38,34 @@ public class Acao {
 
 		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
 			modelo.addRow(new Object[] { Dados.arrayProdutos.get(i).getProduto(),
-					Dados.arrayProdutos.get(i).getQuantidade(),
-					Dados.arrayProdutos.get(i).getValor(),
-					Dados.arrayProdutos.get(i).getDepartamento(),
-					Dados.arrayProdutos.get(i).getDescricao()});
+					Dados.arrayProdutos.get(i).getQuantidade(), Dados.arrayProdutos.get(i).getValor(),
+					Dados.arrayProdutos.get(i).getDepartamento(), Dados.arrayProdutos.get(i).getDescricao() });
 		}
 
 		return modelo;
 
 	}
 
-	
+	// Selecionar imagem
+	public Image selecionaImagem() {
+		JFileChooser fc = new JFileChooser();
+		fc.setAcceptAllFileFilterUsed(false);
+		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG and JPG", "png", "jpg");
+		fc.addChoosableFileFilter(filter);
+		int aux = fc.showDialog(null,"Escolher imagem");
+		if(aux == fc.APPROVE_OPTION) {
+			File imagemEscolhida = new File(fc.getSelectedFile().getPath()); 
+			try {
+				Image imagem = ImageIO.read(imagemEscolhida);
+				Image newimg = imagem.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); //Definir tamanho----------------------------------
+				return newimg;
+			} catch (IOException e1) {
+				e1.printStackTrace();
+			}
+		}
+		Image imagem = null;
+		return imagem;
+		
+	}
+
 }
