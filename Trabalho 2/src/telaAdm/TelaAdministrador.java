@@ -21,6 +21,7 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -45,7 +46,7 @@ public class TelaAdministrador extends JFrame {
 	private JTextArea txtDescricao = new JTextArea();
 	private JSpinner spinnerQuantidade = new JSpinner();
 	private static int codigoProduto;
-	private Image imagem;
+	private ImageIcon imagem;
 	private File imagemEscolhida;
 	
 	private void limparCampos() {

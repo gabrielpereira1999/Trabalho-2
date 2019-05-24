@@ -2,18 +2,21 @@ package beans;
 
 import java.awt.Image;
 
+import javax.swing.ImageIcon;
+
 public class Produtos {
 	
 	String produto, departamento, descricao;
 	int quantidade;
 	double valor;
-	Image foto;
+	ImageIcon foto;
 	
 	
-	public Image getFoto() {
+	
+	public ImageIcon getFoto() {
 		return foto;
 	}
-	public void setFoto(Image foto) {
+	public void setFoto(ImageIcon foto) {
 		this.foto = foto;
 	}
 	public String getProduto() {

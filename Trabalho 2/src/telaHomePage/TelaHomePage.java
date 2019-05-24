@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import dados.Dados;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.Image;
@@ -96,44 +98,44 @@ public class TelaHomePage extends JFrame {
 		lblDestaques.setBounds(10, 172, 108, 30);
 		contentPane.add(lblDestaques);
 		
-		JLabel lblImagemdoproduto = new JLabel("ImagemDoProduto");
+		JLabel lblImagemdoproduto = new JLabel(Dados.arrayProdutos.get(0).getFoto());
 		lblImagemdoproduto.setBounds(10, 213, 108, 106);
 		contentPane.add(lblImagemdoproduto);
 		
-		JLabel lblNomeprodutodestaque1 = new JLabel("NomeProdutoDestaque1");
+		JLabel lblNomeprodutodestaque1 = new JLabel(Dados.arrayProdutos.get(0).getProduto());
 		lblNomeprodutodestaque1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNomeprodutodestaque1.setBounds(143, 253, 175, 22);
 		contentPane.add(lblNomeprodutodestaque1);
 		
-		JLabel lblValorprodutodestaque1 = new JLabel("ValorProdutoDestaque1");
+		JLabel lblValorprodutodestaque1 = new JLabel("R$ "+Dados.arrayProdutos.get(0).getValor());
 		lblValorprodutodestaque1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblValorprodutodestaque1.setBounds(380, 256, 163, 16);
 		contentPane.add(lblValorprodutodestaque1);
 		
-		JLabel lblImagemdoproduto_1 = new JLabel("ImagemDoProduto2");
-		lblImagemdoproduto_1.setBounds(10, 335, 108, 106);
-		contentPane.add(lblImagemdoproduto_1);
+		JLabel lblImagemdoproduto2 = new JLabel(Dados.arrayProdutos.get(1).getFoto());
+		lblImagemdoproduto2.setBounds(10, 335, 108, 106);
+		contentPane.add(lblImagemdoproduto2);
 		
-		JLabel lblNomeprodutodestaque_1 = new JLabel("NomeProdutoDestaque2");
-		lblNomeprodutodestaque_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNomeprodutodestaque_1.setBounds(143, 375, 175, 22);
-		contentPane.add(lblNomeprodutodestaque_1);
+		JLabel lblNomeprodutodestaque2 = new JLabel(Dados.arrayProdutos.get(1).getProduto());
+		lblNomeprodutodestaque2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNomeprodutodestaque2.setBounds(143, 375, 175, 22);
+		contentPane.add(lblNomeprodutodestaque2);
 		
-		JLabel lblValorprodutodestaque = new JLabel("ValorProdutoDestaque2");
-		lblValorprodutodestaque.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblValorprodutodestaque.setBounds(380, 381, 163, 16);
-		contentPane.add(lblValorprodutodestaque);
+		JLabel lblValorprodutodestaque2 = new JLabel("R$ "+Dados.arrayProdutos.get(1).getValor());
+		lblValorprodutodestaque2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblValorprodutodestaque2.setBounds(380, 381, 163, 16);
+		contentPane.add(lblValorprodutodestaque2);
 		
-		JLabel lblImagemdoproduto3 = new JLabel("ImagemDoProduto3");
+		JLabel lblImagemdoproduto3 = new JLabel(Dados.arrayProdutos.get(2).getFoto());
 		lblImagemdoproduto3.setBounds(10, 457, 108, 106);
 		contentPane.add(lblImagemdoproduto3);
 		
-		JLabel lblNomeprodutodestaque3 = new JLabel("NomeProdutoDestaque3");
+		JLabel lblNomeprodutodestaque3 = new JLabel(Dados.arrayProdutos.get(2).getProduto());
 		lblNomeprodutodestaque3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNomeprodutodestaque3.setBounds(143, 497, 175, 22);
 		contentPane.add(lblNomeprodutodestaque3);
 		
-		JLabel lblValorprodutodestaque3 = new JLabel("ValorProdutoDestaque3");
+		JLabel lblValorprodutodestaque3 = new JLabel("R$ "+Dados.arrayProdutos.get(2).getValor());
 		lblValorprodutodestaque3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblValorprodutodestaque3.setBounds(380, 500, 163, 16);
 		contentPane.add(lblValorprodutodestaque3);
