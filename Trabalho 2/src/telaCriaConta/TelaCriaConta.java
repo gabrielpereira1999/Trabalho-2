@@ -111,7 +111,7 @@ public class TelaCriaConta extends JFrame {
 		txtCep2.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
-		btnCadastrar.setBounds(227, 190, 89, 23);
+		btnCadastrar.setBounds(199, 190, 150, 23);
 		contentPane.add(btnCadastrar);
 	}
 }

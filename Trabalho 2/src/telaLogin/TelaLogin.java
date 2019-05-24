@@ -3,10 +3,15 @@ package telaLogin;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import telaCriaConta.TelaCriaConta;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class TelaLogin extends JFrame {
@@ -51,6 +56,16 @@ public class TelaLogin extends JFrame {
 		btnCriarConta.setBounds(116, 76, 160, 23);
 		contentPane.add(btnCriarConta);
 		
+		
+		//AÇÕES DOS BOTÕES-----------------------------------------------------------------------------------------------------------------------
+		btnCriarConta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				
+				TelaCriaConta f = new TelaCriaConta();
+				f.setVisible(true);
+			}
+		});
 		
 		
 	}
