@@ -104,12 +104,12 @@ public class TelaHomePage extends JFrame {
 		
 		JLabel lblNomeprodutodestaque1 = new JLabel(Dados.arrayProdutos.get(0).getProduto());
 		lblNomeprodutodestaque1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNomeprodutodestaque1.setBounds(143, 253, 175, 22);
+		lblNomeprodutodestaque1.setBounds(143, 253, 286, 22);
 		contentPane.add(lblNomeprodutodestaque1);
 		
 		JLabel lblValorprodutodestaque1 = new JLabel("R$ "+Dados.arrayProdutos.get(0).getValor());
 		lblValorprodutodestaque1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblValorprodutodestaque1.setBounds(380, 256, 163, 16);
+		lblValorprodutodestaque1.setBounds(439, 256, 90, 16);
 		contentPane.add(lblValorprodutodestaque1);
 		
 		JLabel lblImagemdoproduto2 = new JLabel(Dados.arrayProdutos.get(1).getFoto());
@@ -118,12 +118,12 @@ public class TelaHomePage extends JFrame {
 		
 		JLabel lblNomeprodutodestaque2 = new JLabel(Dados.arrayProdutos.get(1).getProduto());
 		lblNomeprodutodestaque2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNomeprodutodestaque2.setBounds(143, 375, 175, 22);
+		lblNomeprodutodestaque2.setBounds(143, 375, 286, 22);
 		contentPane.add(lblNomeprodutodestaque2);
 		
 		JLabel lblValorprodutodestaque2 = new JLabel("R$ "+Dados.arrayProdutos.get(1).getValor());
 		lblValorprodutodestaque2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblValorprodutodestaque2.setBounds(380, 381, 163, 16);
+		lblValorprodutodestaque2.setBounds(439, 378, 90, 16);
 		contentPane.add(lblValorprodutodestaque2);
 		
 		JLabel lblImagemdoproduto3 = new JLabel(Dados.arrayProdutos.get(2).getFoto());
@@ -132,12 +132,12 @@ public class TelaHomePage extends JFrame {
 		
 		JLabel lblNomeprodutodestaque3 = new JLabel(Dados.arrayProdutos.get(2).getProduto());
 		lblNomeprodutodestaque3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNomeprodutodestaque3.setBounds(143, 497, 175, 22);
+		lblNomeprodutodestaque3.setBounds(143, 497, 286, 22);
 		contentPane.add(lblNomeprodutodestaque3);
 		
 		JLabel lblValorprodutodestaque3 = new JLabel("R$ "+Dados.arrayProdutos.get(2).getValor());
 		lblValorprodutodestaque3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblValorprodutodestaque3.setBounds(380, 500, 163, 16);
+		lblValorprodutodestaque3.setBounds(439, 500, 90, 16);
 		contentPane.add(lblValorprodutodestaque3);
 		
 		JButton btnPaginaDoProduto = new JButton("P\u00E1gina do Produto");
