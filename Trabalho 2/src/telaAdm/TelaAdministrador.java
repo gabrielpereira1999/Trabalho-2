@@ -181,6 +181,28 @@ public class TelaAdministrador extends JFrame {
 		contentPane.add(btnCadastrar);
 		
 		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				//Instânciar obj
+				Produtos p = new Produtos();
+				p.setProduto(txtProduto.getText());
+				p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
+				p.setValor(Double.parseDouble(txtValor.getText()));
+				p.setDepartamento(comboDepartamento.getSelectedItem().toString());
+				p.setDescricao(txtDescricao.getText());
+				
+				//Realizar cadastro
+				a.alterarProdutos(p);
+				
+				//Atualizar
+				tableProdutos.setModel(a.selecionarProdutos());
+
+				//Limpar campos
+				limparCampos();
+				
+			}
+		});
 		btnAlterar.setEnabled(false);
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAlterar.setBounds(195, 359, 175, 25);
