@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import acao.Acao;
 import beans.Produtos;
+import jdk.nashorn.api.tree.TryTree;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -93,7 +94,7 @@ public class TelaAdministrador extends JFrame {
 
 		comboDepartamento.setBounds(10, 114, 150, 20);
 		contentPane.add(comboDepartamento);
-
+		
 		comboDepartamento.addItem("Placa de Vídeo");
 		comboDepartamento.addItem("Processador");
 		comboDepartamento.addItem("HDD/SSD");
@@ -178,11 +179,14 @@ public class TelaAdministrador extends JFrame {
 				btnCancelar.setEnabled(true);
 
 			}
+			
 		});
 
 		txtValor.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyReleased(KeyEvent e) {
+				
+				try {
 
 				// Converter caractere em ASCII
 				int caractere = (int) e.getKeyChar();
@@ -198,10 +202,40 @@ public class TelaAdministrador extends JFrame {
 					}
 
 				}
+				
+			}catch (Exception caractere) {
+				// TODO: handle exception
+			}
 
 			}
 
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				try {
+				
+				// Converter caractere em ASCII
+				int caractere = (int) e.getKeyChar();
+
+				if (caractere != 8) {
+
+					// Obter o valor digitado
+					String texto = txtValor.getText();
+
+					// Validar caractere
+					if (caractere < 48 || caractere > 57) {
+						txtValor.setText(texto.substring(0, texto.length() - 1));
+					}
+
+				}
+			}catch (Exception caractere) {
+				// TODO: handle exception
+			}
+				
+			}
 		});
+		
+		
 		// REALIZAR_ALTERAÇÃO---------------------------------------------------------------------------------------------------------------------------------------------
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
