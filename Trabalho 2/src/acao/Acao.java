@@ -19,8 +19,8 @@ public class Acao {
 
 	// CADASTRAR_PRODUTOS
 	public void cadastrarProdutos(Produtos p) {
-		for(int i = 0;i<Dados.arrayProdutos.size();i++){
-			if(Dados.arrayProdutos.get(i).getProduto().equals(p.getProduto())) {
+		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
+			if (Dados.arrayProdutos.get(i).getProduto().equals(p.getProduto())) {
 				JOptionPane.showMessageDialog(null, "Um produto com este nome já foi cadastrado");
 				return;
 			}
@@ -115,7 +115,7 @@ public class Acao {
 
 		Dados.arrayProdutos.add(p2);
 
-		//TERCEIRO_PRODUTO
+		// TERCEIRO_PRODUTO
 		Produtos p3 = new Produtos();
 		p3.setProduto("Zotac NVIDIA GeForce RTX 2080 Ti");
 		p3.setDepartamento("Placa de Vídeo");
@@ -134,18 +134,18 @@ public class Acao {
 		Dados.arrayProdutos.add(p3);
 
 	}
-	
-	//ATUALIZA_TELA_PRODUTO_DEPARTAMENTO--------------------------------------------------------------------------------------------------------------
+
+	// ATUALIZA_TELA_PRODUTO_DEPARTAMENTO--------------------------------------------------------------------------------------------------------------
 	public Dimension NovaTelaProdutos(String dpt) {
-		//VERIFICA_NUMERO_DE_PRODUTOS_NO_DPT
+		// VERIFICA_NUMERO_DE_PRODUTOS_NO_DPT
 		int cont = 0;
-		for(int i = 0;i<Dados.arrayProdutos.size();i++) {
-			if( Dados.arrayProdutos.get(i).getDepartamento().equals(dpt) ) {
+		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
+			if (Dados.arrayProdutos.get(i).getDepartamento().equals(dpt)) {
 				cont++;
 			}
 		}
-		
-		Dimension dimensaoCriada = new Dimension(100,(cont*747));
+
+		Dimension dimensaoCriada = new Dimension(100, (cont * 747));
 		return dimensaoCriada;
 	}
 }
