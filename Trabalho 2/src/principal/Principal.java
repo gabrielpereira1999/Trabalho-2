@@ -18,7 +18,7 @@ public class Principal {
 		//TelaLogin f = new TelaLogin();
 		//TelaHomePage f = new TelaHomePage();
 		//TelaAdministrador f = new TelaAdministrador();
-		TelaProdutoDpt f = new TelaProdutoDpt();
+		TelaProdutoDpt f = new TelaProdutoDpt("Processador");
 		f.setVisible(true);
 
 	}

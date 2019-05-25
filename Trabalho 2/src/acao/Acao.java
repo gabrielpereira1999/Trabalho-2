@@ -129,8 +129,16 @@ public class Acao {
 	}
 	
 	//ATUALIZA_TELA_PRODUTO_DEPARTAMENTO--------------------------------------------------------------------------------------------------------------
-	public Dimension NovaTelaProdutos() {
+	public Dimension NovaTelaProdutos(String dpt) {
+		//VERIFICA_NUMERO_DE_PRODUTOS_NO_DPT
+		int cont = 0;
+		for(int i = 0;i<Dados.arrayProdutos.size();i++) {
+			if( Dados.arrayProdutos.get(i).getDepartamento().equals(dpt) ) {
+				cont++;
+			}
+		}
 		
+		Dimension dimensaoCriada = new Dimension(100,(cont*747));
 		return dimensaoCriada;
 	}
 }

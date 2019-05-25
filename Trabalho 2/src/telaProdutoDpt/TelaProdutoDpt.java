@@ -18,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import acao.Acao;
 import telaHomePage.TelaHomePage;
 
 @SuppressWarnings("serial")
@@ -26,7 +27,7 @@ public class TelaProdutoDpt extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
 
-	public TelaProdutoDpt() {
+	public TelaProdutoDpt(String dpt) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 783, 637);
 		contentPane = new JPanel();
@@ -35,12 +36,14 @@ public class TelaProdutoDpt extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		Acao a = new Acao();
+		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 172, 747, 415);
 		contentPane.add(scrollPane, BorderLayout.EAST);
 		
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(100,2000));
+		panel.setPreferredSize(a.NovaTelaProdutos(dpt));
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);		
 
@@ -111,41 +114,31 @@ public class TelaProdutoDpt extends JFrame {
 
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
-				f.setVisible(true);
-			}
+				panel.setPreferredSize(a.NovaTelaProdutos("Placa de Vídeo"));
+			}	
 		});
 
 		btnProcessador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
-				f.setVisible(true);
+				panel.setPreferredSize(a.NovaTelaProdutos("Processador"));
 			}
 		});
 
 		btnHddSsd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
-				f.setVisible(true);
+				panel.setPreferredSize(a.NovaTelaProdutos("HDD/SDD"));
 			}
 		});
 
 		btnMemoriaRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
-				f.setVisible(true);
+				panel.setPreferredSize(a.NovaTelaProdutos("Memória Ram"));
 			}
 		});
 
 		btnPerifericos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
-				f.setVisible(true);
+				panel.setPreferredSize(a.NovaTelaProdutos("Periféricos"));
 			}
 		});
 

@@ -161,7 +161,7 @@ public class TelaHomePage extends JFrame {
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
+				TelaProdutoDpt f = new TelaProdutoDpt("Placa de Vídeo");
 				f.setVisible(true);
 			}
 		});
@@ -169,7 +169,7 @@ public class TelaHomePage extends JFrame {
 		btnProcessador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
+				TelaProdutoDpt f = new TelaProdutoDpt("Processador");
 				f.setVisible(true);
 			}
 		});
@@ -177,7 +177,7 @@ public class TelaHomePage extends JFrame {
 		btnHddSsd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
+				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SDD");
 				f.setVisible(true);
 			}
 		});
@@ -185,7 +185,7 @@ public class TelaHomePage extends JFrame {
 		btnMemoriaRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
+				TelaProdutoDpt f = new TelaProdutoDpt("Memória Ram");
 				f.setVisible(true);
 			}
 		});
@@ -193,7 +193,7 @@ public class TelaHomePage extends JFrame {
 		btnPerifericos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt();
+				TelaProdutoDpt f = new TelaProdutoDpt("Periféricos");
 				f.setVisible(true);
 			}
 		});
