@@ -15,8 +15,8 @@ public class Principal {
 		
 		
 		//TelaLogin f = new TelaLogin();
-		TelaHomePage f = new TelaHomePage();
-		//TelaAdministrador f = new TelaAdministrador();
+		//TelaHomePage f = new TelaHomePage();
+		TelaAdministrador f = new TelaAdministrador();
 		f.setVisible(true);
 
 	}

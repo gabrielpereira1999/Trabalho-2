@@ -17,11 +17,12 @@ public class Acao {
 
 	// Cadastrar Produtos
 	public void cadastrarProdutos(Produtos p) {
+
 		Dados.arrayProdutos.add(p);
 	}
 
 	// Alterar Produtos
-	public void alterarProdutos(Produtos p, int i) {
+	public void alterarProdutos(int i, Produtos p) {
 
 		Dados.arrayProdutos.set(i, p);
 	}
@@ -46,18 +47,18 @@ public class Acao {
 
 	}
 
-	// Selecionar imagem
+	// SELECIONAR IMAGEM------------------------------------------------------------------------------------------------------------------------
 	public ImageIcon selecionaImagem() {
 		JFileChooser fc = new JFileChooser();
 		fc.setAcceptAllFileFilterUsed(false);
 		FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG and JPG", "png", "jpg");
 		fc.addChoosableFileFilter(filter);
-		int aux = fc.showDialog(null,"Escolher imagem");
-		if(aux == fc.APPROVE_OPTION) {
-			File imagemEscolhida = new File(fc.getSelectedFile().getPath()); 
+		int aux = fc.showDialog(null, "Escolher imagem");
+		if (aux == fc.APPROVE_OPTION) {
+			File imagemEscolhida = new File(fc.getSelectedFile().getPath());
 			try {
 				Image imagem = ImageIO.read(imagemEscolhida);
-				Image newimg = imagem.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); //Definir tamanho----------------------------------
+				Image newimg = imagem.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH); // DEFINIR_TAMANHO------------------------------
 				ImageIcon foto = new ImageIcon(newimg);
 				return foto;
 			} catch (IOException e1) {
@@ -66,12 +67,12 @@ public class Acao {
 		}
 		ImageIcon imagem = null;
 		return imagem;
-		
+
 	}
-	
-	//Cria produtos padrao
-	public void criaProdutos () {
-		//Primeiro produto
+
+	// CRIA PRODUTOS INICIAIS----------------------------------------------------------------------------------------------------------------------
+	public void criaProdutos() {
+		// PRIMEIRO PRODUTO
 		Produtos p = new Produtos();
 		p.setProduto("HyperX Fury 8GB");
 		p.setDepartamento("HDD/SSD");
@@ -79,47 +80,51 @@ public class Acao {
 		p.setDescricao("Memória HyperX Fury, 8GB, 2400MHz, DDR4, CL15, Preto - HX424C15FB2/8");
 		p.setValor(270);
 		try {
-			ImageIcon foto = new ImageIcon(ImageIO.read(Acao.class.getResource("Ram hyperx.jpg")).getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
+			ImageIcon foto = new ImageIcon(ImageIO.read(Acao.class.getResource("Ram hyperx.jpg")).getScaledInstance(120,
+					120, java.awt.Image.SCALE_SMOOTH));
 			p.setFoto(foto);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Dados.arrayProdutos.add(p);
-		
-		//Segundo produto
+
+		// SEGUNDO PRODUTO
 		Produtos p2 = new Produtos();
 		p2.setProduto("Intel Core i7-9700K");
 		p2.setDepartamento("Processador");
 		p2.setQuantidade(50);
-		p2.setDescricao("Processador Intel Core i7-9700K Coffee Lake Refresh, Cache 12MB, 3.6GHz (4.9GHz Max Turbo), LGA 1151 - BX80684I79700K");
+		p2.setDescricao(
+				"Processador Intel Core i7-9700K Coffee Lake Refresh, Cache 12MB, 3.6GHz (4.9GHz Max Turbo), LGA 1151 - BX80684I79700K");
 		p2.setValor(2700);
 		try {
-			ImageIcon foto2 = new ImageIcon(ImageIO.read(Acao.class.getResource("I7 9700k.jpg")).getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
+			ImageIcon foto2 = new ImageIcon(ImageIO.read(Acao.class.getResource("I7 9700k.jpg")).getScaledInstance(120,
+					120, java.awt.Image.SCALE_SMOOTH));
 			p2.setFoto(foto2);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		Dados.arrayProdutos.add(p2);
-		
-		//Terceiro produto
-				Produtos p3 = new Produtos();
-				p3.setProduto("Zotac NVIDIA GeForce RTX 2080 Ti");
-				p3.setDepartamento("Placa de Vídeo");
-				p3.setQuantidade(200);
-				p3.setDescricao("Placa de Vídeo VGA Zotac NVIDIA GeForce RTX 2080 Ti Triple Fan 11GB, GDDR6, 352 bits, PCI-E 3.0 - ZT-T20810F-10P");
-				p3.setValor(8000);
-				try {
-					ImageIcon foto3 = new ImageIcon(ImageIO.read(Acao.class.getResource("RTX2080TI.jpg")).getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH));
-					p3.setFoto(foto3);
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-				
-				Dados.arrayProdutos.add(p3);
-		
-		
+
+		// TERCEIRO PRODUTO
+		Produtos p3 = new Produtos();
+		p3.setProduto("Zotac NVIDIA GeForce RTX 2080 Ti");
+		p3.setDepartamento("Placa de Vídeo");
+		p3.setQuantidade(200);
+		p3.setDescricao(
+				"Placa de Vídeo VGA Zotac NVIDIA GeForce RTX 2080 Ti Triple Fan 11GB, GDDR6, 352 bits, PCI-E 3.0 - ZT-T20810F-10P");
+		p3.setValor(8000);
+		try {
+			ImageIcon foto3 = new ImageIcon(ImageIO.read(Acao.class.getResource("RTX2080TI.jpg")).getScaledInstance(120,
+					120, java.awt.Image.SCALE_SMOOTH));
+			p3.setFoto(foto3);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		Dados.arrayProdutos.add(p3);
+
 	}
 
 }
