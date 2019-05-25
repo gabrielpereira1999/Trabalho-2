@@ -1,5 +1,6 @@
 package acao;
 
+import java.awt.Dimension;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -15,19 +16,19 @@ import dados.Dados;
 
 public class Acao {
 
-	// Cadastrar Produtos
+	// CADASTRAR_PRODUTOS
 	public void cadastrarProdutos(Produtos p) {
 
 		Dados.arrayProdutos.add(p);
 	}
 
-	// Alterar Produtos
+	// ALTERAR_PRODUTOS
 	public void alterarProdutos(int i, Produtos p) {
 
 		Dados.arrayProdutos.set(i, p);
 	}
 
-	// Selecionar Produtos
+	// SSELECIONAR_PRODUTOS
 	public DefaultTableModel selecionarProdutos() {
 
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -47,7 +48,7 @@ public class Acao {
 
 	}
 
-	// SELECIONAR IMAGEM------------------------------------------------------------------------------------------------------------------------
+	// SELECIONAR_IMAGEM------------------------------------------------------------------------------------------------------------------------
 	public ImageIcon selecionaImagem() {
 		JFileChooser fc = new JFileChooser();
 		fc.setAcceptAllFileFilterUsed(false);
@@ -70,9 +71,9 @@ public class Acao {
 
 	}
 
-	// CRIA PRODUTOS INICIAIS----------------------------------------------------------------------------------------------------------------------
+	// CRIA_PRODUTOS_INICIAIS----------------------------------------------------------------------------------------------------------------------
 	public void criaProdutos() {
-		// PRIMEIRO PRODUTO
+		// PRIMEIRO_PRODUTO
 		Produtos p = new Produtos();
 		p.setProduto("HyperX Fury 8GB");
 		p.setDepartamento("HDD/SSD");
@@ -89,7 +90,7 @@ public class Acao {
 
 		Dados.arrayProdutos.add(p);
 
-		// SEGUNDO PRODUTO
+		// SEGUNDO_PRODUTO
 		Produtos p2 = new Produtos();
 		p2.setProduto("Intel Core i7-9700K");
 		p2.setDepartamento("Processador");
@@ -107,7 +108,7 @@ public class Acao {
 
 		Dados.arrayProdutos.add(p2);
 
-		// TERCEIRO PRODUTO
+		//TERCEIRO_PRODUTO
 		Produtos p3 = new Produtos();
 		p3.setProduto("Zotac NVIDIA GeForce RTX 2080 Ti");
 		p3.setDepartamento("Placa de Vídeo");
@@ -126,5 +127,10 @@ public class Acao {
 		Dados.arrayProdutos.add(p3);
 
 	}
-
+	
+	//ATUALIZA_TELA_PRODUTO_DEPARTAMENTO--------------------------------------------------------------------------------------------------------------
+	public Dimension NovaTelaProdutos() {
+		
+		return dimensaoCriada;
+	}
 }

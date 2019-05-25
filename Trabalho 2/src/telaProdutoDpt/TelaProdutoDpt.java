@@ -1,6 +1,7 @@
 package telaProdutoDpt;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -32,6 +34,15 @@ public class TelaProdutoDpt extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 172, 747, 415);
+		contentPane.add(scrollPane, BorderLayout.EAST);
+		
+		JPanel panel = new JPanel();
+		panel.setPreferredSize(new Dimension(100,2000));
+		scrollPane.setViewportView(panel);
+		panel.setLayout(null);		
 
 		JLabel lblMonster = new JLabel("MONSTER");
 		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
