@@ -5,11 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import dados.Dados;
-import telaHddSdd.TelaHddSdd;
-import telaMemoriaRam.TelaMemoriaRam;
-import telaPerifericos.TelaPerifericos;
-import telaPlacaVideo.TelaPlacaVideo;
-import telaProcessador.TelaProcessador;
+import telaProdutoDpt.TelaProdutoDpt;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -75,10 +71,10 @@ public class TelaHomePage extends JFrame {
 		contentPane.add(txtPesquisa);
 		txtPesquisa.setColumns(10);
 		
-		JButton btnPlacaDeVdeo = new JButton("Placa de V\u00EDdeo");
-		btnPlacaDeVdeo.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnPlacaDeVdeo.setBounds(10, 131, 142, 30);
-		contentPane.add(btnPlacaDeVdeo);
+		JButton btnPlacaDeVideo = new JButton("Placa de V\u00EDdeo");
+		btnPlacaDeVideo.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnPlacaDeVideo.setBounds(10, 131, 142, 30);
+		contentPane.add(btnPlacaDeVideo);
 		
 		JButton btnProcessador = new JButton("Processador");
 		btnProcessador.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -90,15 +86,15 @@ public class TelaHomePage extends JFrame {
 		btnHddSsd.setBounds(314, 131, 142, 30);
 		contentPane.add(btnHddSsd);
 		
-		JButton btnMemriaRam = new JButton("Mem\u00F3ria RAM");
-		btnMemriaRam.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnMemriaRam.setBounds(466, 131, 142, 30);
-		contentPane.add(btnMemriaRam);
+		JButton btnMemoriaRam = new JButton("Mem\u00F3ria RAM");
+		btnMemoriaRam.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnMemoriaRam.setBounds(466, 131, 142, 30);
+		contentPane.add(btnMemoriaRam);
 		
-		JButton btnPerifricos = new JButton("Perif\u00E9ricos");
-		btnPerifricos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnPerifricos.setBounds(618, 131, 142, 30);
-		contentPane.add(btnPerifricos);
+		JButton btnPerifericos = new JButton("Perif\u00E9ricos");
+		btnPerifericos.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnPerifericos.setBounds(618, 131, 142, 30);
+		contentPane.add(btnPerifericos);
 		
 		JLabel lblDestaques = new JLabel("Destaques");
 		lblDestaques.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -162,10 +158,10 @@ public class TelaHomePage extends JFrame {
 		btnPaginaDoProduto3.setBounds(591, 499, 169, 23);
 		contentPane.add(btnPaginaDoProduto3);
 		
-		btnPlacaDeVdeo.addActionListener(new ActionListener() {
+		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaPlacaVideo f = new TelaPlacaVideo();
+				TelaProdutoDpt f = new TelaProdutoDpt();
 				f.setVisible(true);
 			}
 		});
@@ -173,7 +169,7 @@ public class TelaHomePage extends JFrame {
 		btnProcessador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProcessador f = new TelaProcessador();
+				TelaProdutoDpt f = new TelaProdutoDpt();
 				f.setVisible(true);
 			}
 		});
@@ -181,23 +177,23 @@ public class TelaHomePage extends JFrame {
 		btnHddSsd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaHddSdd f = new TelaHddSdd();
+				TelaProdutoDpt f = new TelaProdutoDpt();
 				f.setVisible(true);
 			}
 		});
 		
-		btnMemriaRam.addActionListener(new ActionListener() {
+		btnMemoriaRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaMemoriaRam f = new TelaMemoriaRam();
+				TelaProdutoDpt f = new TelaProdutoDpt();
 				f.setVisible(true);
 			}
 		});
 		
-		btnPerifricos.addActionListener(new ActionListener() {
+		btnPerifericos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaPerifericos f = new TelaPerifericos();
+				TelaProdutoDpt f = new TelaProdutoDpt();
 				f.setVisible(true);
 			}
 		});
