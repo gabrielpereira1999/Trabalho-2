@@ -153,28 +153,29 @@ public class Acao {
 	}
 
 	// CADASTRAR_USUARIO-------------------------------------------------------------------------------------------------------------------------------
-	public void CadastraUsuario(String usuario, String senha, String senha2, String email, String cep, String cep2,
+	public boolean CadastraUsuario(String usuario, String senha, String senha2, String email, String cep, String cep2,
 			String nome, String cpf) {
 		for (int i = 0; i < Dados.arrayUsuarios.size(); i++) {
 			if (Dados.arrayUsuarios.get(i)[0].equals(usuario)) {
 				JOptionPane.showMessageDialog(null, "Este nome de usuário já foi cadastrado");
-				return;
+				return false;
 			}
 		}
 
 		if ((usuario.equals("")) || (senha.equals("")) || (email.equals("")) || (cep.equals("")) || (cep2.equals(""))
 				|| (nome.equals("")) || (cpf.equals(""))) {
 			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
-			return;
+			return false;
 		}
 
 		if (!senha.equals(senha2)) {
 			JOptionPane.showMessageDialog(null, "As senhas inseridas não são iguais");
-			return;
+			return false;
 		}
 
 		Dados.arrayUsuarios.add(new String[] { usuario, senha, email, cep + "-" + cep2, nome, cep });
 		Dados.userLogado = usuario;
+		return true;
 	}
 
 	// ALTERA_CADASTRO_USUARIO-----------------------------------------------------------------------------------------------------------------------

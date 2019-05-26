@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import acao.Acao;
+import telaHomePage.TelaHomePage;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -124,8 +125,12 @@ public class TelaCriaConta extends JFrame {
 		btnCadastrar.addActionListener(new ActionListener() {
 			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
-				a.CadastraUsuario(txtUsuario.getText(), txtSenha.getText(), txtSenha2.getText(), //getText_para_password_é_mais_simples
-						txtEmail.getText(), txtCep.getText(), txtCep2.getText(), txtNome.getText(), txtCpf.getText());
+				if(a.CadastraUsuario(txtUsuario.getText(), txtSenha.getText(), txtSenha2.getText(), //getText_para_password_é_mais_simples
+						txtEmail.getText(), txtCep.getText(), txtCep2.getText(), txtNome.getText(), txtCpf.getText())) {
+					setVisible(false);
+					TelaHomePage f = new TelaHomePage();
+					f.setVisible(true);
+				}
 			}
 		});
 	}

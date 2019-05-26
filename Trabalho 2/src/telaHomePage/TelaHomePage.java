@@ -20,8 +20,6 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class TelaHomePage extends JFrame {
-	
-	TelaUmProduto u = new TelaUmProduto();
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
@@ -31,10 +29,10 @@ public class TelaHomePage extends JFrame {
 
 		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
 			if(nomeProduto.equals(Dados.arrayProdutos.get(i).getProduto())) {
-
+				numeroProduto = i;				
 				setVisible(false);
+				TelaUmProduto u = new TelaUmProduto();
 				u.setVisible(true);
-				numeroProduto = i;
 			}
 			
 		}
@@ -219,6 +217,18 @@ public class TelaHomePage extends JFrame {
 				setVisible(false);
 				TelaProdutoDpt f = new TelaProdutoDpt("Periféricos");
 				f.setVisible(true);
+			}
+		});
+		
+		btnPaginaDoProduto2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuxarUmProduto(Dados.arrayProdutos.get(1).getProduto());
+			}
+		});
+		
+		btnPaginaDoProduto3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuxarUmProduto(Dados.arrayProdutos.get(2).getProduto());
 			}
 		});
 		
