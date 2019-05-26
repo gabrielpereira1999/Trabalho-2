@@ -17,10 +17,10 @@ public class Principal {
 		
 		
 		//TelaLogin f = new TelaLogin();
-		//TelaHomePage f = new TelaHomePage();
+		TelaHomePage f = new TelaHomePage();
 		//TelaAdministrador f = new TelaAdministrador();
 		//TelaProdutoDpt f = new TelaProdutoDpt("Processador");
-		TelaCriaConta f = new TelaCriaConta();
+		//TelaCriaConta f = new TelaCriaConta();
 		f.setVisible(true);
 
 	}

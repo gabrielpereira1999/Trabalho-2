@@ -26,25 +26,6 @@ public class TelaUmProduto extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TelaUmProduto frame = new TelaUmProduto();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 */
 	public TelaUmProduto() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 783, 637);
@@ -121,8 +102,8 @@ public class TelaUmProduto extends JFrame {
 		JLabel lblTemp = new JLabel();
 		lblTemp.setBounds(10, 213, 250, 250);
 		
-		ImageIcon fotinho = new ImageIcon(ScaleImage(Dados.arrayProdutos.get(TelaHomePage.numeroProduto).getFoto().getImage(), 
-				lblTemp.getWidth(), lblTemp.getHeight()));
+		ImageIcon fotinho = new ImageIcon(Dados.arrayProdutos.get(TelaHomePage.numeroProduto).getFoto().getImage().
+				getScaledInstance(lblTemp.getWidth(), lblTemp.getHeight(),java.awt.Image.SCALE_SMOOTH));
 		
 		JLabel lblImagemUmProduto = new JLabel(fotinho);
 		lblImagemUmProduto.setBounds(10, 213, 250, 250);

@@ -25,13 +25,12 @@ public class TelaHomePage extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
-	private static String nomeProduto;
 	public static int numeroProduto = 0;
 	
-	public void PuxarUmProduto() {
+	public void PuxarUmProduto(String nomeProduto) {
 
 		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
-			if(nomeProduto == Dados.arrayProdutos.get(i).getProduto().toString()) {
+			if(nomeProduto.equals(Dados.arrayProdutos.get(i).getProduto())) {
 
 				setVisible(false);
 				u.setVisible(true);
@@ -179,9 +178,7 @@ public class TelaHomePage extends JFrame {
 		
 		btnPaginaDoProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				nomeProduto = (Dados.arrayProdutos.get(0).getProduto().toString());
-				PuxarUmProduto();
+				PuxarUmProduto(Dados.arrayProdutos.get(0).getProduto());
 				
 			}
 		});
