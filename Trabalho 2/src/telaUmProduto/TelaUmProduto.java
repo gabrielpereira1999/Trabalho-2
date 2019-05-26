@@ -193,6 +193,7 @@ public class TelaUmProduto extends JFrame {
 
 		JTextArea txtDescricaoUm = new JTextArea(Dados.arrayProdutos.get(TelaHomePage.numeroProduto).getDescricao());
 		SPdescricaoUmProduto.setViewportView(txtDescricaoUm);
+		txtDescricaoUm.setLineWrap(true);
 		
 		lblMonster.addMouseListener(new MouseAdapter() {
 			@Override

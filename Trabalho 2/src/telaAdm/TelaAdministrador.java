@@ -10,6 +10,7 @@ import beans.PlacaDeVideo;
 import beans.Processador;
 import beans.Produtos;
 import beans.Ram;
+import telaHomePage.TelaHomePage;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -39,6 +40,14 @@ public class TelaAdministrador extends JFrame {
 	private JLabel lblDepartamento;
 	private JLabel lblQuantidade;
 	private JLabel lblDescrio;
+	private JLabel lblMemoria = new JLabel("Mem\u00F3ria");
+	private JLabel lblNucleos = new JLabel("N\u00FAcleos");
+	private JLabel lblClock = new JLabel("Clock");
+	private JLabel lblBits = new JLabel("Bits");
+	private JLabel lblThreads = new JLabel("Threads");
+	private JLabel lblVelWrite = new JLabel("Vel. Escrita");
+	private JLabel lblVelRead = new JLabel("Vel. Leitura");
+	private JLabel lblDdr = new JLabel("DDR");
 	protected static JTable tableProdutos;
 	@SuppressWarnings("rawtypes")
 	protected JComboBox comboDepartamento = new JComboBox();
@@ -66,6 +75,15 @@ public class TelaAdministrador extends JFrame {
 		txtValor.setText("");
 		comboDepartamento.setSelectedIndex(0);
 		spinnerQuantidade.setValue(0);
+		
+		txtMemoria.setText("");
+		txtBits.setText("");
+		txtClock.setText("");
+		txtNucleos.setText("");
+		txtThreads.setText("");
+		txtVelRead.setText("");
+		txtVelWrite.setText("");
+		txtDdr.setText("");
 
 		// Botões
 		btnCadastrar.setEnabled(true);
@@ -86,44 +104,42 @@ public class TelaAdministrador extends JFrame {
 
 		Acao a = new Acao();
 
-		JLabel lblNucleos = new JLabel("N\u00FAcleos");
 		lblNucleos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNucleos.setBounds(198, 138, 75, 14);
+		lblNucleos.setBounds(198, 105, 75, 14);
 		contentPane.add(lblNucleos);
 
-		JLabel lblClock = new JLabel("Clock");
 		lblClock.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblClock.setBounds(10, 138, 48, 14);
+		lblClock.setBounds(10, 105, 48, 14);
 		contentPane.add(lblClock);
 
 		JLabel lblProduto = new JLabel("Produto");
 		lblProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblProduto.setBounds(10, 21, 57, 19);
+		lblProduto.setBounds(10, 11, 57, 19);
 		contentPane.add(lblProduto);
 
 		txtProduto = new JTextField();
 		txtProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtProduto.setBounds(10, 44, 150, 20);
+		txtProduto.setBounds(10, 30, 150, 20);
 		contentPane.add(txtProduto);
 		txtProduto.setColumns(10);
 
 		JLabel lblValor = new JLabel("Valor");
 		lblValor.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblValor.setBounds(198, 21, 57, 19);
+		lblValor.setBounds(198, 11, 57, 19);
 		contentPane.add(lblValor);
 
 		txtValor = new JTextField();
 		txtValor.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtValor.setColumns(10);
-		txtValor.setBounds(198, 44, 75, 20);
+		txtValor.setBounds(198, 30, 75, 20);
 		contentPane.add(txtValor);
 
 		lblDepartamento = new JLabel("Departamento");
 		lblDepartamento.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDepartamento.setBounds(10, 75, 103, 19);
+		lblDepartamento.setBounds(10, 55, 103, 19);
 		contentPane.add(lblDepartamento);
 
-		comboDepartamento.setBounds(10, 105, 150, 20);
+		comboDepartamento.setBounds(10, 74, 150, 20);
 		contentPane.add(comboDepartamento);
 
 		comboDepartamento.addItem("Placa de Vídeo");
@@ -133,22 +149,22 @@ public class TelaAdministrador extends JFrame {
 		comboDepartamento.addItem("Periféricos");
 
 		JSpinner spinnerQuantidade = new JSpinner();
-		spinnerQuantidade.setBounds(198, 105, 75, 20);
+		spinnerQuantidade.setBounds(198, 74, 75, 20);
 		contentPane.add(spinnerQuantidade);
 		spinnerQuantidade.setModel(new SpinnerNumberModel(0, 0, 100, 1));
 
 		lblQuantidade = new JLabel("Quantidade");
 		lblQuantidade.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblQuantidade.setBounds(198, 75, 83, 19);
+		lblQuantidade.setBounds(198, 55, 83, 19);
 		contentPane.add(lblQuantidade);
 
 		lblDescrio = new JLabel("Descri\u00E7\u00E3o");
 		lblDescrio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDescrio.setBounds(10, 236, 88, 19);
+		lblDescrio.setBounds(10, 210, 88, 19);
 		contentPane.add(lblDescrio);
 
 		JScrollPane scrollPaneDescricao = new JScrollPane();
-		scrollPaneDescricao.setBounds(10, 266, 263, 82);
+		scrollPaneDescricao.setBounds(10, 240, 263, 108);
 		contentPane.add(scrollPaneDescricao);
 
 		scrollPaneDescricao.setViewportView(txtDescricao);
@@ -164,103 +180,103 @@ public class TelaAdministrador extends JFrame {
 		scrollPaneProdutos.setViewportView(tableProdutos);
 
 		btnCadastrar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCadastrar.setBounds(10, 359, 175, 25);
+		btnCadastrar.setBounds(10, 359, 130, 25);
 		contentPane.add(btnCadastrar);
 
 		btnAlterar.setEnabled(false);
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAlterar.setBounds(195, 359, 175, 25);
+		btnAlterar.setBounds(161, 359, 130, 25);
 		contentPane.add(btnAlterar);
 
 		btnExcluir.setEnabled(false);
 		btnExcluir.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnExcluir.setBounds(380, 359, 175, 25);
+		btnExcluir.setBounds(314, 359, 130, 25);
 		contentPane.add(btnExcluir);
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCancelar.setBounds(565, 359, 175, 25);
+		btnCancelar.setBounds(467, 359, 130, 25);
 		contentPane.add(btnCancelar);
 
 		JButton btnEscolherImagem = new JButton("Escolher Imagem");
-		btnEscolherImagem.setBounds(137, 232, 136, 23);
+		btnEscolherImagem.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnEscolherImagem.setBounds(123, 208, 150, 23);
 		contentPane.add(btnEscolherImagem);
 
-		JLabel lblMemoria = new JLabel("Mem\u00F3ria");
 		lblMemoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblMemoria.setBounds(10, 136, 103, 19);
+		lblMemoria.setBounds(10, 103, 103, 19);
 		contentPane.add(lblMemoria);
 
 		txtMemoria = new JTextField();
 		txtMemoria.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtMemoria.setColumns(10);
-		txtMemoria.setBounds(10, 161, 150, 20);
+		txtMemoria.setBounds(10, 130, 150, 20);
 		contentPane.add(txtMemoria);
 
-		JLabel lblBits = new JLabel("Bits");
 		lblBits.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblBits.setBounds(198, 136, 57, 19);
+		lblBits.setBounds(198, 103, 57, 19);
 		contentPane.add(lblBits);
 
 		txtBits = new JTextField();
 		txtBits.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtBits.setColumns(10);
-		txtBits.setBounds(198, 161, 75, 20);
+		txtBits.setBounds(198, 130, 75, 20);
 		contentPane.add(txtBits);
 
 		txtClock = new JTextField();
 		txtClock.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtClock.setColumns(10);
-		txtClock.setBounds(10, 161, 150, 20);
+		txtClock.setBounds(10, 130, 150, 20);
 		contentPane.add(txtClock);
 
 		txtNucleos = new JTextField();
 		txtNucleos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtNucleos.setColumns(10);
-		txtNucleos.setBounds(198, 161, 75, 20);
+		txtNucleos.setBounds(198, 130, 75, 20);
 		contentPane.add(txtNucleos);
 
-		JLabel lblThreads = new JLabel("Threads");
 		lblThreads.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblThreads.setBounds(10, 192, 57, 14);
+		lblThreads.setBounds(10, 161, 57, 14);
 		contentPane.add(lblThreads);
 
 		txtThreads = new JTextField();
 		txtThreads.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtThreads.setColumns(10);
-		txtThreads.setBounds(10, 210, 150, 20);
+		txtThreads.setBounds(10, 179, 150, 20);
 		contentPane.add(txtThreads);
-
-		JLabel lblVelWrite = new JLabel("Vel. Escrita");
+		
 		lblVelWrite.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblVelWrite.setBounds(10, 136, 103, 19);
+		lblVelWrite.setBounds(10, 103, 103, 19);
 		contentPane.add(lblVelWrite);
 
 		txtVelWrite = new JTextField();
 		txtVelWrite.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtVelWrite.setColumns(10);
-		txtVelWrite.setBounds(10, 161, 150, 20);
+		txtVelWrite.setBounds(10, 130, 150, 20);
 		contentPane.add(txtVelWrite);
-
-		JLabel lblVelRead = new JLabel("lblVelWrite");
+		
 		lblVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblVelRead.setBounds(198, 136, 57, 19);
+		lblVelRead.setBounds(198, 103, 57, 19);
 		contentPane.add(lblVelRead);
 
 		txtVelRead = new JTextField();
 		txtVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtVelRead.setColumns(10);
-		txtVelRead.setBounds(198, 161, 75, 20);
+		txtVelRead.setBounds(198, 130, 75, 20);
 		contentPane.add(txtVelRead);
-
-		JLabel lblDdr = new JLabel("DDR");
+		
 		lblDdr.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDdr.setBounds(198, 136, 57, 19);
+		lblDdr.setBounds(198, 103, 57, 19);
 		contentPane.add(lblDdr);
 
 		txtDdr = new JTextField();
 		txtDdr.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		txtDdr.setColumns(10);
-		txtDdr.setBounds(198, 161, 75, 20);
+		txtDdr.setBounds(198, 130, 75, 20);
 		contentPane.add(txtDdr);
+		
+		JButton btnHomepage = new JButton("HomePage");
+		btnHomepage.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnHomepage.setBounds(607, 359, 130, 25);
+		contentPane.add(btnHomepage);
 
 		txtMemoria.setVisible(true);
 		txtBits.setVisible(true);
@@ -386,7 +402,7 @@ public class TelaAdministrador extends JFrame {
 					p.setDescricao(txtDescricao.getText());
 					p.setFoto(imagem);
 					p.setBits(Integer.parseInt(txtBits.getText()));
-					p.setMemoria(Integer.parseInt(txtMemoria.getText()));
+					p.setMemoria(txtMemoria.getText());
 					a.cadastrarProdutos(p);
 				}else if (comboDepartamento.getSelectedIndex() == 1) { // PROCESSADOR------------------------------------------
 					// Instânciar_obj
@@ -423,7 +439,7 @@ public class TelaAdministrador extends JFrame {
 					p.setDescricao(txtDescricao.getText());
 					p.setFoto(imagem);
 					p.setMemoria(Integer.parseInt(txtMemoria.getText()));
-					p.setDdr(Integer.parseInt(txtMemoria.getText()));
+					p.setDdr(Integer.parseInt(txtDdr.getText()));
 					a.cadastrarProdutos(p);
 				}else {
 					Produtos p = new Produtos();
@@ -538,6 +554,14 @@ public class TelaAdministrador extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				limparCampos();
 
+			}
+		});
+		
+		btnHomepage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaHomePage f = new TelaHomePage();
+				f.setVisible(true);
 			}
 		});
 

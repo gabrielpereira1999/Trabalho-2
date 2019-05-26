@@ -117,6 +117,7 @@ public class TelaHomePage extends JFrame {
 		lblDestaques.setBounds(10, 172, 108, 30);
 		contentPane.add(lblDestaques);
 		
+		try {
 		JLabel lblImagemdoproduto = new JLabel(Dados.arrayProdutos.get(0).getFoto());
 		lblImagemdoproduto.setBounds(10, 213, 108, 106);
 		contentPane.add(lblImagemdoproduto);
@@ -130,6 +131,18 @@ public class TelaHomePage extends JFrame {
 		lblValorprodutodestaque1.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblValorprodutodestaque1.setBounds(439, 256, 90, 16);
 		contentPane.add(lblValorprodutodestaque1);
+		
+		JButton btnPaginaDoProduto = new JButton("P\u00E1gina do Produto");
+		btnPaginaDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnPaginaDoProduto.setBounds(591, 253, 169, 23);
+		contentPane.add(btnPaginaDoProduto);
+		
+		btnPaginaDoProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuxarUmProduto(Dados.arrayProdutos.get(0).getProduto());
+				
+			}
+		});
 		
 		JLabel lblImagemdoproduto2 = new JLabel(Dados.arrayProdutos.get(1).getFoto());
 		lblImagemdoproduto2.setBounds(10, 330, 108, 106);
@@ -145,6 +158,17 @@ public class TelaHomePage extends JFrame {
 		lblValorprodutodestaque2.setBounds(439, 378, 90, 16);
 		contentPane.add(lblValorprodutodestaque2);
 		
+		JButton btnPaginaDoProduto2 = new JButton("P\u00E1gina do Produto");
+		btnPaginaDoProduto2.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnPaginaDoProduto2.setBounds(591, 377, 169, 23);
+		contentPane.add(btnPaginaDoProduto2);
+		
+		btnPaginaDoProduto2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PuxarUmProduto(Dados.arrayProdutos.get(1).getProduto());
+			}
+		});
+		
 		JLabel lblImagemdoproduto3 = new JLabel(Dados.arrayProdutos.get(2).getFoto());
 		lblImagemdoproduto3.setBounds(10, 457, 108, 106);
 		contentPane.add(lblImagemdoproduto3);
@@ -159,27 +183,21 @@ public class TelaHomePage extends JFrame {
 		lblValorprodutodestaque3.setBounds(439, 500, 90, 16);
 		contentPane.add(lblValorprodutodestaque3);
 		
-		JButton btnPaginaDoProduto = new JButton("P\u00E1gina do Produto");
-		btnPaginaDoProduto.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnPaginaDoProduto.setBounds(591, 253, 169, 23);
-		contentPane.add(btnPaginaDoProduto);
-		
-		JButton btnPaginaDoProduto2 = new JButton("P\u00E1gina do Produto");
-		btnPaginaDoProduto2.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnPaginaDoProduto2.setBounds(591, 377, 169, 23);
-		contentPane.add(btnPaginaDoProduto2);
-		
 		JButton btnPaginaDoProduto3 = new JButton("P\u00E1gina do Produto");
 		btnPaginaDoProduto3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPaginaDoProduto3.setBounds(591, 499, 169, 23);
 		contentPane.add(btnPaginaDoProduto3);
 		
-		btnPaginaDoProduto.addActionListener(new ActionListener() {
+		btnPaginaDoProduto3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(0).getProduto());
-				
+				PuxarUmProduto(Dados.arrayProdutos.get(2).getProduto());
 			}
 		});
+		
+		}catch(Exception a){
+			
+		}
+		
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -207,7 +225,7 @@ public class TelaHomePage extends JFrame {
 		btnMemoriaRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("Memória Ram");
+				TelaProdutoDpt f = new TelaProdutoDpt("Memória RAM");
 				f.setVisible(true);
 			}
 		});
@@ -220,17 +238,6 @@ public class TelaHomePage extends JFrame {
 			}
 		});
 		
-		btnPaginaDoProduto2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(1).getProduto());
-			}
-		});
-		
-		btnPaginaDoProduto3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(2).getProduto());
-			}
-		});
 		
 	}
 

@@ -1,13 +1,14 @@
 package beans;
 
 public class PlacaDeVideo extends Produtos{
-	int memoria, bits;
+	int bits;
+	String memoria;
 
-	public int getMemoria() {
+	public String getMemoria() {
 		return memoria;
 	}
 
-	public void setMemoria(int memoria) {
+	public void setMemoria(String memoria) {
 		this.memoria = memoria;
 	}
 

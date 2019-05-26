@@ -30,23 +30,23 @@ public class TelaProdutoDpt extends JFrame {
 
 	public TelaProdutoDpt(String dpt) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 783, 637);
+		setBounds(100, 100, 784, 637);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		Acao a = new Acao();
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 172, 747, 415);
 		contentPane.add(scrollPane, BorderLayout.EAST);
-		
+
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(a.NovaTelaProdutos(dpt));
 		scrollPane.setViewportView(panel);
-		panel.setLayout(null);		
+		panel.setLayout(null);
 
 		JLabel lblMonster = new JLabel("MONSTER");
 		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -116,7 +116,7 @@ public class TelaProdutoDpt extends JFrame {
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				panel.setPreferredSize(a.NovaTelaProdutos("Placa de Vídeo"));
-			}	
+			}
 		});
 
 		btnProcessador.addActionListener(new ActionListener() {
@@ -160,17 +160,32 @@ public class TelaProdutoDpt extends JFrame {
 				f.setVisible(true);
 			}
 		});
-		
+
 		btnMinhaConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Dados.userLogado.equals("admin")) {
+				if (Dados.userLogado.equals("admin")) {
 					setVisible(false);
 					TelaAdministrador f = new TelaAdministrador();
 					f.setVisible(true);
-				}else {
-					
+				} else {
+
 				}
 			}
 		});
+
+		// ADICIONA_OS_PRODUTOS----------------------------------------------------------------------------------------------------------------------
+		int cont = 0;
+		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
+			if (Dados.arrayProdutos.get(i).getDepartamento().equals(dpt)) {
+				JLabel imagem = new JLabel(Dados.arrayProdutos.get(i).getFoto());
+				imagem.setBounds(10, (cont*150), 120, 120);
+				panel.add(imagem);
+				JLabel nome = new JLabel(Dados.arrayProdutos.get(i).getProduto());
+				nome.setBounds(150, (cont*50)+50, 300, 30);
+				panel.add(nome);
+				cont++;
+
+			}
+		}
 	}
 }

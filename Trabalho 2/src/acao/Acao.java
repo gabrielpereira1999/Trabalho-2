@@ -83,7 +83,7 @@ public class Acao {
 		// PRIMEIRO_PRODUTO
 		Produtos p = new Produtos();
 		p.setProduto("HyperX Fury 8GB");
-		p.setDepartamento("HDD/SSD");
+		p.setDepartamento("Memória RAM");
 		p.setQuantidade(100);
 		p.setDescricao("Memória HyperX Fury, 8GB, 2400MHz, DDR4, CL15, Preto - HX424C15FB2/8");
 		p.setValor(270);
@@ -148,7 +148,7 @@ public class Acao {
 			}
 		}
 
-		Dimension dimensaoCriada = new Dimension(100, (cont * 747));
+		Dimension dimensaoCriada = new Dimension(700, (cont * 747));
 		return dimensaoCriada;
 	}
 
