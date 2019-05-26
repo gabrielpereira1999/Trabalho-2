@@ -6,6 +6,7 @@ import javax.swing.border.EmptyBorder;
 
 import dados.Dados;
 import telaProdutoDpt.TelaProdutoDpt;
+import telaUmProduto.TelaUmProduto;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,9 +20,27 @@ import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
 public class TelaHomePage extends JFrame {
+	
+	TelaUmProduto u = new TelaUmProduto();
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
+	private static String nomeProduto;
+	public static int numeroProduto = 0;
+	
+	public void PuxarUmProduto() {
+
+		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
+			if(nomeProduto == Dados.arrayProdutos.get(i).getProduto().toString()) {
+
+				setVisible(false);
+				u.setVisible(true);
+				numeroProduto = i;
+			}
+			
+		}
+
+	}
 
 	public TelaHomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,7 +135,7 @@ public class TelaHomePage extends JFrame {
 		contentPane.add(lblValorprodutodestaque1);
 		
 		JLabel lblImagemdoproduto2 = new JLabel(Dados.arrayProdutos.get(1).getFoto());
-		lblImagemdoproduto2.setBounds(10, 335, 108, 106);
+		lblImagemdoproduto2.setBounds(10, 330, 108, 106);
 		contentPane.add(lblImagemdoproduto2);
 		
 		JLabel lblNomeprodutodestaque2 = new JLabel(Dados.arrayProdutos.get(1).getProduto());
@@ -158,6 +177,14 @@ public class TelaHomePage extends JFrame {
 		btnPaginaDoProduto3.setBounds(591, 499, 169, 23);
 		contentPane.add(btnPaginaDoProduto3);
 		
+		btnPaginaDoProduto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				nomeProduto = (Dados.arrayProdutos.get(0).getProduto().toString());
+				PuxarUmProduto();
+				
+			}
+		});
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
