@@ -1,6 +1,5 @@
 package telaContaUsuario;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -13,7 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
@@ -24,6 +22,7 @@ import telaHomePage.TelaHomePage;
 import telaProdutoDpt.TelaProdutoDpt;
 import javax.swing.JPasswordField;
 
+@SuppressWarnings("serial")
 public class TelaContaUsuario extends JFrame {
 
 	private JPanel contentPane;
@@ -266,6 +265,7 @@ public class TelaContaUsuario extends JFrame {
 		// ALTERA_DADOS-------------------------------------------------------------------------------------------------------------------------------
 		btnAlterar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				@SuppressWarnings("deprecation")
 				String[] temp = new String[] { txtUsuario.getText(), txtSenha.getText(), txtEmail.getText(),
 						txtCep.getText() + "-" + txtCep2.getText(), txtNome.getText(), txtCpf.getText() };
 				a.AlteraCadastroUsuario(temp);

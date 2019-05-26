@@ -14,7 +14,6 @@ import javax.swing.table.DefaultTableModel;
 
 import beans.Produtos;
 import dados.Dados;
-import telaLogin.TelaLogin;
 
 public class Acao {
 
@@ -36,7 +35,7 @@ public class Acao {
 		Dados.arrayProdutos.set(i, p);
 	}
 
-	// SSELECIONAR_PRODUTOS
+	// SELECIONAR_PRODUTOS
 	public DefaultTableModel selecionarProdutos() {
 
 		DefaultTableModel modelo = new DefaultTableModel();
@@ -197,6 +196,11 @@ public class Acao {
 		}
 		JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
 		return false;
+	}
+	
+	//EXLCUIR_PRODUTO---------------------------------------------------------------------------------------------------------------------------------
+	public void ExcluirProduto(int i ) {
+		Dados.arrayProdutos.remove(i);
 	}
 
 }

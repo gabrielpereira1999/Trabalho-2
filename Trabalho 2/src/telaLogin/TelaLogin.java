@@ -62,8 +62,7 @@ public class TelaLogin extends JFrame {
 		txtSenha.setBounds(72, 47, 204, 20);
 		contentPane.add(txtSenha);
 
-		// AÇÕES DOS
-		// BOTÕES-----------------------------------------------------------------------------------------------------------------------
+		// AÇÕES_DOS_BOTÕES-----------------------------------------------------------------------------------------------------------------------
 		btnCriarConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -72,6 +71,7 @@ public class TelaLogin extends JFrame {
 				f.setVisible(true);
 			}
 		});
+		
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("deprecation")
