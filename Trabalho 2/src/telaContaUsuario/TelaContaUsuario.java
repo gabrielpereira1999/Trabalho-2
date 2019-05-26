@@ -42,8 +42,8 @@ public class TelaContaUsuario extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-contentPane.setLayout(null);
-		
+		contentPane.setLayout(null);
+
 		Acao a = new Acao();
 		contentPane.setLayout(null);
 
@@ -111,84 +111,84 @@ contentPane.setLayout(null);
 		btnPerifericos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPerifericos.setBounds(618, 131, 142, 30);
 		contentPane.add(btnPerifericos);
-		
+
 		JLabel lblDados = new JLabel("Dados");
-		lblDados.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDados.setBounds(37, 217, 48, 14);
+		lblDados.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblDados.setBounds(160, 209, 96, 22);
 		contentPane.add(lblDados);
-		
+
 		JLabel lblNome = new JLabel("Usu\u00E1rio");
 		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNome.setBounds(37, 267, 105, 14);
 		contentPane.add(lblNome);
-		
+
 		txtUsuario = new JTextField();
 		txtUsuario.setBounds(37, 292, 152, 20);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
-		
+
 		JLabel lblSenha = new JLabel("Senha");
 		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSenha.setBounds(37, 323, 48, 14);
 		contentPane.add(lblSenha);
-		
+
 		txtSenha = new JPasswordField();
 		txtSenha.setBounds(37, 348, 152, 20);
 		contentPane.add(txtSenha);
-		
+
 		JLabel lblCep = new JLabel("CEP");
 		lblCep.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCep.setBounds(37, 379, 48, 14);
 		contentPane.add(lblCep);
-		
+
 		txtCep = new JTextField();
 		txtCep.setBounds(37, 414, 96, 20);
 		contentPane.add(txtCep);
 		txtCep.setColumns(10);
-		
+
 		JLabel lblSeparaCamposCep = new JLabel("-");
 		lblSeparaCamposCep.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblSeparaCamposCep.setBounds(141, 417, 5, 14);
 		contentPane.add(lblSeparaCamposCep);
-		
+
 		txtCep2 = new JTextField();
 		txtCep2.setBounds(151, 414, 36, 20);
 		contentPane.add(txtCep2);
 		txtCep2.setColumns(10);
-		
+
 		JLabel lblNomeCompleto = new JLabel("Nome Completo");
 		lblNomeCompleto.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNomeCompleto.setBounds(244, 267, 152, 14);
 		contentPane.add(lblNomeCompleto);
-		
+
 		txtNome = new JTextField();
 		txtNome.setColumns(10);
 		txtNome.setBounds(244, 292, 152, 20);
 		contentPane.add(txtNome);
-		
+
 		JLabel lblEmail = new JLabel("E-mail");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblEmail.setBounds(244, 325, 48, 14);
 		contentPane.add(lblEmail);
-		
+
 		txtEmail = new JTextField();
 		txtEmail.setColumns(10);
 		txtEmail.setBounds(244, 348, 152, 20);
 		contentPane.add(txtEmail);
-		
+
 		JLabel lblCpf = new JLabel("CPF");
 		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblCpf.setBounds(244, 381, 48, 14);
 		contentPane.add(lblCpf);
-		
+
 		txtCpf = new JTextField();
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(244, 414, 152, 20);
 		contentPane.add(txtCpf);
-		
+
 		JButton btnAlterar = new JButton("Alterar");
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnAlterar.setBounds(37, 479, 152, 23);
+		btnAlterar.setBounds(140, 478, 152, 23);
 		contentPane.add(btnAlterar);
 
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
@@ -196,7 +196,7 @@ contentPane.setLayout(null);
 				setVisible(false);
 				TelaProdutoDpt f = new TelaProdutoDpt("Placa de Vídeo");
 				f.setVisible(true);
-			}	
+			}
 		});
 
 		btnProcessador.addActionListener(new ActionListener() {
@@ -248,17 +248,27 @@ contentPane.setLayout(null);
 				f.setVisible(true);
 			}
 		});
-		
+
 		btnMinhaConta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(Dados.userLogado.equals("admin")) {
+				if (Dados.userLogado.equals("admin")) {
 					setVisible(false);
 					TelaAdministrador f = new TelaAdministrador();
 					f.setVisible(true);
-				}else {
+				} else {
 					setVisible(false);
 					TelaContaUsuario f = new TelaContaUsuario();
+					f.setVisible(true);
 				}
+			}
+		});
+
+		// ALTERA_DADOS-------------------------------------------------------------------------------------------------------------------------------
+		btnAlterar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] temp = new String[] { txtUsuario.getText(), txtSenha.getText(), txtEmail.getText(),
+						txtCep.getText() + "-" + txtCep2.getText(), txtNome.getText(), txtCpf.getText() };
+				a.AlteraCadastroUsuario(temp);
 			}
 		});
 

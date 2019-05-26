@@ -122,6 +122,7 @@ public class TelaCriaConta extends JFrame {
 		contentPane.add(txtSenha2);
 		
 		btnCadastrar.addActionListener(new ActionListener() {
+			@SuppressWarnings("deprecation")
 			public void actionPerformed(ActionEvent e) {
 				a.CadastraUsuario(txtUsuario.getText(), txtSenha.getText(), txtSenha2.getText(), //getText_para_password_é_mais_simples
 						txtEmail.getText(), txtCep.getText(), txtCep2.getText(), txtNome.getText(), txtCpf.getText());

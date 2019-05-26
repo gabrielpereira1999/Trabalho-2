@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import beans.Produtos;
 import dados.Dados;
+import telaLogin.TelaLogin;
 
 public class Acao {
 
@@ -132,9 +133,9 @@ public class Acao {
 		}
 
 		Dados.arrayProdutos.add(p3);
-		
-		//ADD_CONTA_ADM
-		Dados.arrayUsuarios.add(new String[] { "admin", "admin", "", "" + "-" + "", "Administrador", ""});
+
+		// ADD_CONTA_ADM
+		Dados.arrayUsuarios.add(new String[] { "admin", "admin", "", "" + "-" + "", "Administrador", "" });
 
 	}
 
@@ -176,4 +177,26 @@ public class Acao {
 		Dados.arrayUsuarios.add(new String[] { usuario, senha, email, cep + "-" + cep2, nome, cep });
 		Dados.userLogado = usuario;
 	}
+
+	// ALTERA_CADASTRO_USUARIO-----------------------------------------------------------------------------------------------------------------------
+	public void AlteraCadastroUsuario(String[] temp) {
+		for (int i = 0; i < Dados.arrayUsuarios.size(); i++) {
+			if (Dados.arrayUsuarios.get(i)[0].equals(Dados.userLogado)) {
+				Dados.arrayUsuarios.set(i, temp);
+			}
+		}
+	}
+
+	// FAZ_LOGIN--------------------------------------------------------------------------------------------------------------------------------------
+	public boolean FazLogin(String[] temp) {
+		for (int i = 0; i < Dados.arrayUsuarios.size(); i++) {
+			if (Dados.arrayUsuarios.get(i)[0].equals(temp[0])) {
+				Dados.userLogado = temp[0];
+				return true;
+			}
+		}
+		JOptionPane.showMessageDialog(null, "Usuario ou senha incorretos");
+		return false;
+	}
+
 }

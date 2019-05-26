@@ -16,8 +16,8 @@ public class Principal {
 		a.criaProdutos();
 		
 		
-		//TelaLogin f = new TelaLogin();
-		TelaHomePage f = new TelaHomePage();
+		TelaLogin f = new TelaLogin();
+		//TelaHomePage f = new TelaHomePage();
 		//TelaAdministrador f = new TelaAdministrador();
 		//TelaProdutoDpt f = new TelaProdutoDpt("Processador");
 		//TelaCriaConta f = new TelaCriaConta();
