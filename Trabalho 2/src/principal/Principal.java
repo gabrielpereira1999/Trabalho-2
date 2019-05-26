@@ -2,6 +2,7 @@ package principal;
 
 import acao.Acao;
 import telaAdm.TelaAdministrador;
+import telaCriaConta.TelaCriaConta;
 import telaHomePage.TelaHomePage;
 import telaLogin.TelaLogin;
 import telaProdutoDpt.TelaProdutoDpt;
@@ -18,7 +19,8 @@ public class Principal {
 		//TelaLogin f = new TelaLogin();
 		//TelaHomePage f = new TelaHomePage();
 		//TelaAdministrador f = new TelaAdministrador();
-		TelaProdutoDpt f = new TelaProdutoDpt("Processador");
+		//TelaProdutoDpt f = new TelaProdutoDpt("Processador");
+		TelaCriaConta f = new TelaCriaConta();
 		f.setVisible(true);
 
 	}

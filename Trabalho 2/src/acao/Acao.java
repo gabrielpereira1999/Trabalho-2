@@ -148,4 +148,28 @@ public class Acao {
 		Dimension dimensaoCriada = new Dimension(100, (cont * 747));
 		return dimensaoCriada;
 	}
+	
+	// CADASTRAR_USUARIO
+	public void CadastraUsuario(String usuario,String senha,String senha2,String email,String cep,String cep2,String nome,String cpf) {
+		for(int i =0; i<Dados.arrayUsuarios.size();i++) {
+			if( Dados.arrayUsuarios.get(i)[0].equals(usuario) ) {
+				JOptionPane.showMessageDialog(null, "Este nome de usuário já foi cadastrado");
+				return;
+			}
+		}
+		
+		if( (usuario.equals("")) || (senha.equals("")) || (email.equals("")) || (cep.equals("")) || (cep2.equals("")) || (nome.equals("")) || (cpf.equals("")) ) {
+			JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+			return;
+		}
+		
+		if( !senha.equals(senha2) ) {
+			JOptionPane.showMessageDialog(null, "As senhas inseridas não são iguais");
+			return;
+		}
+		
+		Dados.arrayUsuarios.add(new String[] {
+				usuario, senha, email, cep+"-"+cep2, nome, cep
+		});
+	}
 }
