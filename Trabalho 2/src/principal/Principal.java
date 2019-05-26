@@ -11,9 +11,9 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		//Cria produtos padrao e login adm
 		Acao a = new Acao();
 		a.criaProdutos();
-		//Cria produtos padrao
 		
 		
 		//TelaLogin f = new TelaLogin();

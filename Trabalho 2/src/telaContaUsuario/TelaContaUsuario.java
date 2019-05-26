@@ -1,4 +1,4 @@
-package telaProdutoDpt;
+package telaContaUsuario;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -21,32 +21,31 @@ import acao.Acao;
 import dados.Dados;
 import telaAdm.TelaAdministrador;
 import telaHomePage.TelaHomePage;
+import telaProdutoDpt.TelaProdutoDpt;
+import javax.swing.JPasswordField;
 
-@SuppressWarnings("serial")
-public class TelaProdutoDpt extends JFrame {
+public class TelaContaUsuario extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
+	private JTextField txtUsuario;
+	private JPasswordField txtSenha;
+	private JTextField txtCep;
+	private JTextField txtCep2;
+	private JTextField txtNome;
+	private JTextField txtEmail;
+	private JTextField txtCpf;
 
-	public TelaProdutoDpt(String dpt) {
+	public TelaContaUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 783, 637);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
+contentPane.setLayout(null);
 		
 		Acao a = new Acao();
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 172, 747, 415);
-		contentPane.add(scrollPane, BorderLayout.EAST);
-		
-		JPanel panel = new JPanel();
-		panel.setPreferredSize(a.NovaTelaProdutos(dpt));
-		scrollPane.setViewportView(panel);
-		panel.setLayout(null);		
+		contentPane.setLayout(null);
 
 		JLabel lblMonster = new JLabel("MONSTER");
 		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -112,34 +111,123 @@ public class TelaProdutoDpt extends JFrame {
 		btnPerifericos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPerifericos.setBounds(618, 131, 142, 30);
 		contentPane.add(btnPerifericos);
+		
+		JLabel lblDados = new JLabel("Dados");
+		lblDados.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDados.setBounds(37, 217, 48, 14);
+		contentPane.add(lblDados);
+		
+		JLabel lblNome = new JLabel("Usu\u00E1rio");
+		lblNome.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNome.setBounds(37, 267, 105, 14);
+		contentPane.add(lblNome);
+		
+		txtUsuario = new JTextField();
+		txtUsuario.setBounds(37, 292, 152, 20);
+		contentPane.add(txtUsuario);
+		txtUsuario.setColumns(10);
+		
+		JLabel lblSenha = new JLabel("Senha");
+		lblSenha.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSenha.setBounds(37, 323, 48, 14);
+		contentPane.add(lblSenha);
+		
+		txtSenha = new JPasswordField();
+		txtSenha.setBounds(37, 348, 152, 20);
+		contentPane.add(txtSenha);
+		
+		JLabel lblCep = new JLabel("CEP");
+		lblCep.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCep.setBounds(37, 379, 48, 14);
+		contentPane.add(lblCep);
+		
+		txtCep = new JTextField();
+		txtCep.setBounds(37, 414, 96, 20);
+		contentPane.add(txtCep);
+		txtCep.setColumns(10);
+		
+		JLabel lblSeparaCamposCep = new JLabel("-");
+		lblSeparaCamposCep.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSeparaCamposCep.setBounds(141, 417, 5, 14);
+		contentPane.add(lblSeparaCamposCep);
+		
+		txtCep2 = new JTextField();
+		txtCep2.setBounds(151, 414, 36, 20);
+		contentPane.add(txtCep2);
+		txtCep2.setColumns(10);
+		
+		JLabel lblNomeCompleto = new JLabel("Nome Completo");
+		lblNomeCompleto.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNomeCompleto.setBounds(244, 267, 152, 14);
+		contentPane.add(lblNomeCompleto);
+		
+		txtNome = new JTextField();
+		txtNome.setColumns(10);
+		txtNome.setBounds(244, 292, 152, 20);
+		contentPane.add(txtNome);
+		
+		JLabel lblEmail = new JLabel("E-mail");
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblEmail.setBounds(244, 325, 48, 14);
+		contentPane.add(lblEmail);
+		
+		txtEmail = new JTextField();
+		txtEmail.setColumns(10);
+		txtEmail.setBounds(244, 348, 152, 20);
+		contentPane.add(txtEmail);
+		
+		JLabel lblCpf = new JLabel("CPF");
+		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblCpf.setBounds(244, 381, 48, 14);
+		contentPane.add(lblCpf);
+		
+		txtCpf = new JTextField();
+		txtCpf.setColumns(10);
+		txtCpf.setBounds(244, 414, 152, 20);
+		contentPane.add(txtCpf);
+		
+		JButton btnAlterar = new JButton("Alterar");
+		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnAlterar.setBounds(37, 479, 152, 23);
+		contentPane.add(btnAlterar);
 
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setPreferredSize(a.NovaTelaProdutos("Placa de Vídeo"));
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Placa de Vídeo");
+				f.setVisible(true);
 			}	
 		});
 
 		btnProcessador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setPreferredSize(a.NovaTelaProdutos("Processador"));
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Processador");
+				f.setVisible(true);
 			}
 		});
 
 		btnHddSsd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setPreferredSize(a.NovaTelaProdutos("HDD/SDD"));
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SDD");
+				f.setVisible(true);
 			}
 		});
 
 		btnMemoriaRam.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setPreferredSize(a.NovaTelaProdutos("Memória Ram"));
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Memória Ram");
+				f.setVisible(true);
 			}
 		});
 
 		btnPerifericos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				panel.setPreferredSize(a.NovaTelaProdutos("Periféricos"));
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Periféricos");
+				f.setVisible(true);
 			}
 		});
 
@@ -168,9 +256,11 @@ public class TelaProdutoDpt extends JFrame {
 					TelaAdministrador f = new TelaAdministrador();
 					f.setVisible(true);
 				}else {
-					
+					setVisible(false);
+					TelaContaUsuario f = new TelaContaUsuario();
 				}
 			}
 		});
+
 	}
 }

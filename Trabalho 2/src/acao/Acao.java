@@ -132,6 +132,9 @@ public class Acao {
 		}
 
 		Dados.arrayProdutos.add(p3);
+		
+		//ADD_CONTA_ADM
+		Dados.arrayUsuarios.add(new String[] { "admin", "admin", "", "" + "-" + "", "Administrador", ""});
 
 	}
 
@@ -171,5 +174,6 @@ public class Acao {
 		}
 
 		Dados.arrayUsuarios.add(new String[] { usuario, senha, email, cep + "-" + cep2, nome, cep });
+		Dados.userLogado = usuario;
 	}
 }
