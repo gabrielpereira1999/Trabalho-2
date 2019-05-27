@@ -223,5 +223,27 @@ public class Acao {
 	public void ExcluirProduto(int i ) {
 		Dados.arrayProdutos.remove(i);
 	}
-
+	
+	static double total=0;
+	//CALCULA_TOTAL_COMPRA----------------------------------------------------------------------------------------------------------------------
+	public void TotalCompra(double valor) {
+		total+=valor;
+	}
+	
+	//RETORNA_TOTAL_COMPRA----------------------------------------------------------------------------------------------------------------------
+	public double TotalMesmo() {
+		double temp = total;
+		total = 0;
+		return temp;
+	}
+	
+	//REMOVE_DA_QUANTIDADE_DE_PRODUTOS
+	public void ControleEstoque() {
+		for(int i =0;i<Dados.arrayCompras.size();i++) {
+			if( Dados.arrayCompras.get(i).getNomeCompra().equals(Dados.arrayProdutos.get(i).getProduto()) ) {
+				Dados.arrayProdutos.get(i).setQuantidade(Dados.arrayProdutos.get(i).getQuantidade()-Dados.arrayCompras.get(i).getQuantidadeCompra());
+			}
+		}
+	}
+	
 }

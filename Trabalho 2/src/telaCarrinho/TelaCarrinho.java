@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -23,6 +24,7 @@ import telaHomePage.TelaHomePage;
 import telaLogin.TelaLogin;
 import telaPesquisa.TelaPesquisa;
 import telaProdutoDpt.TelaProdutoDpt;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class TelaCarrinho extends JFrame {
@@ -35,25 +37,20 @@ public class TelaCarrinho extends JFrame {
 		setBounds(100, 100, 783, 637);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
 		Acao a = new Acao();
+		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 172, 747, 350);
-		contentPane.add(scrollPane, BorderLayout.EAST);
+		contentPane.add(scrollPane);
 		
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(a.DimensionTelaCarrinho());
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
-
-		JLabel lblMonster = new JLabel("MONSTER");
-		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
-		lblMonster.setBounds(10, 11, 193, 49);
-		contentPane.add(lblMonster);
 
 		JLabel lblInformtica = new JLabel("Inform\u00E1tica");
 		lblInformtica.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -129,6 +126,37 @@ public class TelaCarrinho extends JFrame {
 		btnPerifricos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnPerifricos.setBounds(618, 131, 142, 30);
 		contentPane.add(btnPerifricos);
+		
+		JButton btnFinalizarCompra = new JButton("Finalizar Compra");
+		btnFinalizarCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnFinalizarCompra.setBounds(260, 540, 264, 39);
+		contentPane.add(btnFinalizarCompra);
+		
+		JPanel panelFimCompra = new JPanel();
+		panelFimCompra.setBounds(10, 172, 747, 415);
+		contentPane.add(panelFimCompra);
+		panelFimCompra.setLayout(null);
+		
+		JLabel lblTotal = new JLabel("Total: R$ "+a.TotalMesmo());
+		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblTotal.setBounds(50, 50, 152, 25);
+		panelFimCompra.add(lblTotal);
+		
+		JLabel lblPrazoEntrega = new JLabel("Prazo entrega: 10 dias \u00FAteis");
+		lblPrazoEntrega.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblPrazoEntrega.setBounds(50, 100, 270, 25);
+		panelFimCompra.add(lblPrazoEntrega);
+		
+		JButton btnCompra = new JButton("Comprar");
+		btnCompra.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		btnCompra.setBounds(100, 150, 130, 32);
+		panelFimCompra.add(btnCompra);
+		
+		JLabel lblMonster = new JLabel("MONSTER");
+		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
+		lblMonster.setBounds(0, 0, 193, 49);
+		contentPane.add(lblMonster);
+		panelFimCompra.setVisible(false);
 
 		btnColocarimagemLupa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -247,6 +275,24 @@ public class TelaCarrinho extends JFrame {
 				f.setVisible(true);
 			}
 		});
+		
+		btnFinalizarCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				scrollPane.setVisible(false);
+				panelFimCompra.setVisible(true);
+				btnFinalizarCompra.setVisible(false);
+			}
+		});
+		
+		btnCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				a.ControleEstoque();
+				JOptionPane.showMessageDialog(null, "Obrigado por comprar na MONSTER Informática");
+				Dados.arrayCompras.clear();
+				setVisible(false);
+				TelaHomePage f = new TelaHomePage();
+				f.setVisible(true);
+			}
+		});
 	}
-
 }

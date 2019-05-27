@@ -25,6 +25,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.DefaultFormatter;
 
+import acao.Acao;
 import beans.Compras;
 import dados.Dados;
 import telaAdm.TelaAdministrador;
@@ -54,6 +55,8 @@ public class TelaUmProduto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		Acao a = new Acao();
 		
 		JLabel lblNomeUmProduto = new JLabel();
 
@@ -205,7 +208,7 @@ public class TelaUmProduto extends JFrame {
 				JLabel lblImagemUmProduto = new JLabel(fotinho);
 				lblImagemUmProduto.setBounds(10, 181, 250, 250);
 				contentPane.add(lblImagemUmProduto);
-				}catch(Exception a) {
+				}catch(Exception b) {
 					
 				}
 
@@ -383,6 +386,7 @@ public class TelaUmProduto extends JFrame {
 						obj.setValorCompra(Dados.arrayProdutos.get(i).getValor()* Integer.parseInt((spinner.getValue().toString())));
 						obj.setQuantidadeCompra(Integer.parseInt((spinner.getValue().toString())));
 						obj.setFotoCompra(Dados.arrayProdutos.get(i).getFoto());
+						a.TotalCompra(obj.getValorCompra());
 						Dados.arrayCompras.add(obj);
 						setVisible(false);
 						TelaHomePage f = new TelaHomePage();
@@ -401,6 +405,26 @@ public class TelaUmProduto extends JFrame {
 				f.setVisible(true);
 			}
 		});
-	
+		
+		btnComprar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				for(int i = 0; i < Dados.arrayProdutos.size();i++) {
+					if(lblNomeUmProduto.getText().equals(Dados.arrayProdutos.get(i).getProduto())) {
+						Compras obj = new Compras();
+						obj.setNomeCompra(Dados.arrayProdutos.get(i).getProduto());
+						obj.setValorCompra(Dados.arrayProdutos.get(i).getValor()* Integer.parseInt((spinner.getValue().toString())));
+						obj.setQuantidadeCompra(Integer.parseInt((spinner.getValue().toString())));
+						obj.setFotoCompra(Dados.arrayProdutos.get(i).getFoto());
+						a.TotalCompra(obj.getValorCompra());
+						Dados.arrayCompras.add(obj);
+						setVisible(false);
+						TelaCarrinho f = new TelaCarrinho();
+						f.setVisible(true);
+					}
+				}
+				
+			}
+		});
+		
 	}
 }

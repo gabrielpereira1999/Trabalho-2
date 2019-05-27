@@ -6,6 +6,7 @@ public class Compras {
 	String nomeCompra;
 	int quantidadeCompra;
 	double ValorCompra;
+	
 	ImageIcon fotoCompra;
 	
 	public ImageIcon getFotoCompra() {
