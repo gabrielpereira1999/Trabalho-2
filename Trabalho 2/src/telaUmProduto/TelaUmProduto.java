@@ -25,8 +25,16 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.text.DefaultFormatter;
 
+import beans.Compras;
 import dados.Dados;
+import telaAdm.TelaAdministrador;
+import telaCarrinho.TelaCarrinho;
+import telaContaUsuario.TelaContaUsuario;
 import telaHomePage.TelaHomePage;
+import telaLogin.TelaLogin;
+import telaPesquisa.TelaPesquisa;
+import telaProdutoDpt.TelaProdutoDpt;
+
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -46,6 +54,8 @@ public class TelaUmProduto extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		JLabel lblNomeUmProduto = new JLabel();
 
 		JLabel lblMonster = new JLabel("MONSTER");
 		lblMonster.setFont(new Font("Tahoma", Font.PLAIN, 40));
@@ -199,7 +209,7 @@ public class TelaUmProduto extends JFrame {
 					
 				}
 
-				JLabel lblNomeUmProduto = new JLabel(Dados.arrayProdutos.get(i).getProduto());
+				lblNomeUmProduto.setText(Dados.arrayProdutos.get(i).getProduto());
 				lblNomeUmProduto.setHorizontalAlignment(SwingConstants.CENTER);
 				lblNomeUmProduto.setFont(new Font("Tahoma", Font.PLAIN, 22));
 				lblNomeUmProduto.setBounds(270, 183, 490, 49);
@@ -291,6 +301,104 @@ public class TelaUmProduto extends JFrame {
 		btnTwitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "Página em desenvolvimento");
+			}
+		});
+		
+		btnMinhaConta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Dados.userLogado.equals("admin")) {
+					setVisible(false);
+					TelaAdministrador f = new TelaAdministrador();
+					f.setVisible(true);
+				} else {
+					setVisible(false);
+					TelaContaUsuario f = new TelaContaUsuario();
+					f.setVisible(true);
+				}
+			}
+		});
+		
+		btnPlacaDeVideo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Placa de Vídeo");
+				f.setVisible(true);
+			}
+		});
+		
+		btnProcessador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Processador");
+				f.setVisible(true);
+			}
+		});
+		
+		btnHddSsd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SSD");
+				f.setVisible(true);
+			}
+		});
+		
+		btnMemoriaRam.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Memória RAM");
+				f.setVisible(true);
+			}
+		});
+		
+		btnPerifericos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaProdutoDpt f = new TelaProdutoDpt("Periféricos");
+				f.setVisible(true);
+			}
+		});
+		
+		btnColocarimagemLupa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPesquisa f = new TelaPesquisa(txtPesquisa.getText());
+				f.setVisible(true);
+			}
+		});
+		
+		btnMeuCarrinho.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaCarrinho f = new TelaCarrinho();
+				f.setVisible(true);
+			}
+		});
+		
+		btnCarrinho.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {		
+				for(int i = 0; i < Dados.arrayProdutos.size();i++) {
+					if(lblNomeUmProduto.getText().equals(Dados.arrayProdutos.get(i).getProduto())) {
+						Compras obj = new Compras();
+						obj.setNomeCompra(Dados.arrayProdutos.get(i).getProduto());
+						obj.setValorCompra(Dados.arrayProdutos.get(i).getValor()* Integer.parseInt((spinner.getValue().toString())));
+						obj.setQuantidadeCompra(Integer.parseInt((spinner.getValue().toString())));
+						obj.setFotoCompra(Dados.arrayProdutos.get(i).getFoto());
+						Dados.arrayCompras.add(obj);
+						setVisible(false);
+						TelaHomePage f = new TelaHomePage();
+						f.setVisible(true);
+					}
+				}
+				
+			}
+		});
+		
+		btnDeslogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dados.arrayCompras.clear();
+				setVisible(false);
+				TelaLogin f = new TelaLogin();
+				f.setVisible(true);
 			}
 		});
 	

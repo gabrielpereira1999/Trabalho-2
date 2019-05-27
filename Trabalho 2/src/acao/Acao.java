@@ -151,6 +151,25 @@ public class Acao {
 		Dimension dimensaoCriada = new Dimension(700, (cont * 747));
 		return dimensaoCriada;
 	}
+	
+	// ATUALIZA_TELA_PESQUISA-------------------------------------------------------------------------------------------------------------
+		public Dimension DimensionTelaPesquisa(String pesquisa) {
+			int cont=0;
+			for(int i =0;i<Dados.arrayProdutos.size();i++) {
+				if( Dados.arrayProdutos.get(i).getProduto().contains(pesquisa) ) {
+					cont++;
+				}
+			}
+			Dimension dimensaoCriada = new Dimension(700, (cont * 747));
+			return dimensaoCriada;
+		}
+		
+		// ATUALIZA_TELA_Carrinho-------------------------------------------------------------------------------------------------------------
+				public Dimension DimensionTelaCarrinho() {
+					int cont=Dados.arrayCompras.size();
+					Dimension dimensaoCriada = new Dimension(700, (cont * 747));
+					return dimensaoCriada;
+				}
 
 	// CADASTRAR_USUARIO-------------------------------------------------------------------------------------------------------------------------------
 	public boolean CadastraUsuario(String usuario, String senha, String senha2, String email, String cep, String cep2,
@@ -173,7 +192,7 @@ public class Acao {
 			return false;
 		}
 
-		Dados.arrayUsuarios.add(new String[] { usuario, senha, email, cep + "-" + cep2, nome, cep });
+		Dados.arrayUsuarios.add(new String[] { usuario, senha, email, cep, cep2, nome, cpf });
 		Dados.userLogado = usuario;
 		return true;
 	}
@@ -183,6 +202,7 @@ public class Acao {
 		for (int i = 0; i < Dados.arrayUsuarios.size(); i++) {
 			if (Dados.arrayUsuarios.get(i)[0].equals(Dados.userLogado)) {
 				Dados.arrayUsuarios.set(i, temp);
+				JOptionPane.showMessageDialog(null, "Dados alterados com sucesso");
 			}
 		}
 	}

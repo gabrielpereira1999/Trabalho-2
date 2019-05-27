@@ -1,4 +1,4 @@
-package telaProdutoDpt;
+package telaPesquisa;
 
 import java.awt.BorderLayout;
 import java.awt.Font;
@@ -24,16 +24,15 @@ import telaCarrinho.TelaCarrinho;
 import telaContaUsuario.TelaContaUsuario;
 import telaHomePage.TelaHomePage;
 import telaLogin.TelaLogin;
-import telaPesquisa.TelaPesquisa;
 import telaUmProduto.TelaUmProduto;
 
 @SuppressWarnings("serial")
-public class TelaProdutoDpt extends JFrame {
+public class TelaPesquisa extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
 
-	public TelaProdutoDpt(String dpt) {
+	public TelaPesquisa(String pesquisa) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 784, 637);
 		contentPane = new JPanel();
@@ -49,7 +48,7 @@ public class TelaProdutoDpt extends JFrame {
 		contentPane.add(scrollPane, BorderLayout.EAST);
 
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(a.NovaTelaProdutos(dpt));
+		panel.setPreferredSize(a.NovaTelaProdutos(pesquisa));
 		scrollPane.setViewportView(panel);
 		panel.setLayout(null);
 
@@ -183,7 +182,7 @@ public class TelaProdutoDpt extends JFrame {
 		// ADICIONA_OS_PRODUTOS----------------------------------------------------------------------------------------------------------------------
 		int cont = 0;
 		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
-			if (Dados.arrayProdutos.get(i).getDepartamento().equals(dpt)) {
+			if (Dados.arrayProdutos.get(i).getProduto().contains(pesquisa)) {
 				JLabel imagem = new JLabel(Dados.arrayProdutos.get(i).getFoto());
 				imagem.setBounds(10, (cont*150), 120, 120);
 				panel.add(imagem);
@@ -191,11 +190,11 @@ public class TelaProdutoDpt extends JFrame {
 				nome.setBounds(150, (cont*150)+50, 300, 30);
 				panel.add(nome);
 				JLabel valor = new JLabel("R$"+Dados.arrayProdutos.get(i).getValor());
-				valor.setBounds(450, (cont*150)+50, 150, 30);
+				valor.setBounds(350, (cont*150)+50, 150, 30);
 				panel.add(valor);
 				JButton botao = new JButton("Comprar");
 				botao.setActionCommand(Dados.arrayProdutos.get(i).getProduto());
-				botao.setBounds(550, (cont*150)+50, 150, 30);
+				botao.setBounds(450, (cont*150)+50, 150, 30);
 				panel.add(botao);
 				botao.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
@@ -208,46 +207,6 @@ public class TelaProdutoDpt extends JFrame {
 
 			}
 		}
-		
-		btnPlacaDeVideo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("Placa de Vídeo");
-				f.setVisible(true);
-			}
-		});
-		
-		btnProcessador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("Processador");
-				f.setVisible(true);
-			}
-		});
-		
-		btnHddSsd.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SSD");
-				f.setVisible(true);
-			}
-		});
-		
-		btnMemoriaRam.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("Memória RAM");
-				f.setVisible(true);
-			}
-		});
-		
-		btnPerifericos.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("Periféricos");
-				f.setVisible(true);
-			}
-		});
 		
 		btnColocarimagemLupa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

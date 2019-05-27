@@ -84,6 +84,7 @@ public class TelaAdministrador extends JFrame {
 		txtVelRead.setText("");
 		txtVelWrite.setText("");
 		txtDdr.setText("");
+		//imagem.setImage(null);
 
 		// Botões
 		btnCadastrar.setEnabled(true);
@@ -103,6 +104,18 @@ public class TelaAdministrador extends JFrame {
 		contentPane.setLayout(null);
 
 		Acao a = new Acao();
+		
+				txtVelRead = new JTextField();
+				txtVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
+				txtVelRead.setColumns(10);
+				txtVelRead.setBounds(10, 179, 150, 20);
+				contentPane.add(txtVelRead);
+				txtVelRead.setVisible(false);
+		
+		lblVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblVelRead.setBounds(10, 159, 103, 19);
+		contentPane.add(lblVelRead);
+		lblVelRead.setVisible(false);
 
 		lblNucleos.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblNucleos.setBounds(198, 105, 75, 14);
@@ -253,16 +266,6 @@ public class TelaAdministrador extends JFrame {
 		txtVelWrite.setBounds(10, 130, 150, 20);
 		contentPane.add(txtVelWrite);
 		
-		lblVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblVelRead.setBounds(198, 103, 57, 19);
-		contentPane.add(lblVelRead);
-
-		txtVelRead = new JTextField();
-		txtVelRead.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		txtVelRead.setColumns(10);
-		txtVelRead.setBounds(198, 130, 75, 20);
-		contentPane.add(txtVelRead);
-		
 		lblDdr.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDdr.setBounds(198, 103, 57, 19);
 		contentPane.add(lblDdr);
@@ -288,9 +291,7 @@ public class TelaAdministrador extends JFrame {
 		lblClock.setVisible(false);
 		lblNucleos.setVisible(false);
 		lblThreads.setVisible(false);
-		lblVelRead.setVisible(false);
 		lblVelWrite.setVisible(false);
-		txtVelRead.setVisible(false);
 		txtVelWrite.setVisible(false);
 		lblDdr.setVisible(false);
 		txtDdr.setVisible(false);
@@ -441,7 +442,7 @@ public class TelaAdministrador extends JFrame {
 					p.setMemoria(Integer.parseInt(txtMemoria.getText()));
 					p.setDdr(Integer.parseInt(txtDdr.getText()));
 					a.cadastrarProdutos(p);
-				}else {
+				}else { //PERIFÉRICO-----------------------------------------------------------------------------------------------------------
 					Produtos p = new Produtos();
 					p.setProduto(txtProduto.getText());
 					p.setQuantidade(Integer.parseInt(spinnerQuantidade.getValue().toString()));
@@ -449,6 +450,7 @@ public class TelaAdministrador extends JFrame {
 					p.setDepartamento(comboDepartamento.getSelectedItem().toString());
 					p.setDescricao(txtDescricao.getText());
 					p.setFoto(imagem);
+					a.cadastrarProdutos(p);
 				}
 
 				// Atualizar
@@ -537,6 +539,23 @@ public class TelaAdministrador extends JFrame {
 					txtVelWrite.setVisible(false);
 					lblDdr.setVisible(true);
 					txtDdr.setVisible(true);
+				}else if (comboDepartamento.getSelectedIndex() == 4) {
+					txtMemoria.setVisible(false);
+					txtBits.setVisible(false);
+					lblMemoria.setVisible(false);
+					lblBits.setVisible(false);
+					txtClock.setVisible(false);
+					txtNucleos.setVisible(false);
+					txtThreads.setVisible(false);
+					lblClock.setVisible(false);
+					lblNucleos.setVisible(false);
+					lblThreads.setVisible(false);
+					lblVelRead.setVisible(false);
+					lblVelWrite.setVisible(false);
+					txtVelRead.setVisible(false);
+					txtVelWrite.setVisible(false);
+					lblDdr.setVisible(false);
+					txtDdr.setVisible(false);
 				}
 			}
 		});

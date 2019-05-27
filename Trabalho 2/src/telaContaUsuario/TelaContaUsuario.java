@@ -18,7 +18,10 @@ import javax.swing.border.EmptyBorder;
 import acao.Acao;
 import dados.Dados;
 import telaAdm.TelaAdministrador;
+import telaCarrinho.TelaCarrinho;
 import telaHomePage.TelaHomePage;
+import telaLogin.TelaLogin;
+import telaPesquisa.TelaPesquisa;
 import telaProdutoDpt.TelaProdutoDpt;
 import javax.swing.JPasswordField;
 
@@ -189,6 +192,18 @@ public class TelaContaUsuario extends JFrame {
 		btnAlterar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnAlterar.setBounds(140, 478, 152, 23);
 		contentPane.add(btnAlterar);
+		
+		for(int i =0;i<Dados.arrayUsuarios.size();i++) {
+			if( Dados.arrayUsuarios.get(i)[0].equals(Dados.userLogado) ) {
+				txtUsuario.setText(Dados.arrayUsuarios.get(i)[0]);
+				txtSenha.setText(Dados.arrayUsuarios.get(i)[1]);
+				txtEmail.setText(Dados.arrayUsuarios.get(i)[2]);
+				txtCep.setText(Dados.arrayUsuarios.get(i)[3]);
+				txtCep2.setText(Dados.arrayUsuarios.get(i)[4]);
+				txtNome.setText(Dados.arrayUsuarios.get(i)[5]);
+				txtCpf.setText(Dados.arrayUsuarios.get(i)[6]);
+			}
+		}
 
 		btnPlacaDeVideo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -209,7 +224,7 @@ public class TelaContaUsuario extends JFrame {
 		btnHddSsd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SDD");
+				TelaProdutoDpt f = new TelaProdutoDpt("HDD/SSD");
 				f.setVisible(true);
 			}
 		});
@@ -267,8 +282,33 @@ public class TelaContaUsuario extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				@SuppressWarnings("deprecation")
 				String[] temp = new String[] { txtUsuario.getText(), txtSenha.getText(), txtEmail.getText(),
-						txtCep.getText() + "-" + txtCep2.getText(), txtNome.getText(), txtCpf.getText() };
+						txtCep.getText(),txtCep2.getText(), txtNome.getText(), txtCpf.getText() };
 				a.AlteraCadastroUsuario(temp);
+			}
+		});
+		
+		btnColocarimagemLupa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaPesquisa f = new TelaPesquisa(txtPesquisa.getText());
+				f.setVisible(true);
+			}
+		});
+		
+		btnMeuCarrinho.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				TelaCarrinho f = new TelaCarrinho();
+				f.setVisible(true);
+			}
+		});
+		
+		btnDeslogar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Dados.arrayCompras.clear();
+				setVisible(false);
+				TelaLogin f = new TelaLogin();
+				f.setVisible(true);
 			}
 		});
 
