@@ -21,6 +21,7 @@ import acao.Acao;
 import dados.Dados;
 import telaAdm.TelaAdministrador;
 import telaHomePage.TelaHomePage;
+import telaUmProduto.TelaUmProduto;
 
 @SuppressWarnings("serial")
 public class TelaProdutoDpt extends JFrame {
@@ -183,6 +184,20 @@ public class TelaProdutoDpt extends JFrame {
 				JLabel nome = new JLabel(Dados.arrayProdutos.get(i).getProduto());
 				nome.setBounds(150, (cont*50)+50, 300, 30);
 				panel.add(nome);
+				JLabel valor = new JLabel("R$"+Dados.arrayProdutos.get(i).getValor());
+				valor.setBounds(300, (cont*50)+50, 300, 30);
+				panel.add(valor);
+				JButton botao = new JButton("Comprar");
+				botao.setActionCommand(Dados.arrayProdutos.get(i).getProduto());
+				botao.setBounds(450, (cont*50)+50, 300, 30);
+				panel.add(botao);
+				botao.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						setVisible(false);
+						TelaUmProduto f = new TelaUmProduto(botao.getActionCommand());
+						f.setVisible(true);
+					}
+				});
 				cont++;
 
 			}

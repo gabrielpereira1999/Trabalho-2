@@ -23,21 +23,6 @@ public class TelaHomePage extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtPesquisa;
-	public static int numeroProduto = 0;
-	
-	public void PuxarUmProduto(String nomeProduto) {
-
-		for (int i = 0; i < Dados.arrayProdutos.size(); i++) {
-			if(nomeProduto.equals(Dados.arrayProdutos.get(i).getProduto())) {
-				numeroProduto = i;				
-				setVisible(false);
-				TelaUmProduto u = new TelaUmProduto();
-				u.setVisible(true);
-			}
-			
-		}
-
-	}
 
 	public TelaHomePage() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,7 +124,9 @@ public class TelaHomePage extends JFrame {
 		
 		btnPaginaDoProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(0).getProduto());
+				setVisible(false);
+				TelaUmProduto u = new TelaUmProduto(Dados.arrayProdutos.get(0).getProduto());
+				u.setVisible(true);
 				
 			}
 		});
@@ -165,7 +152,9 @@ public class TelaHomePage extends JFrame {
 		
 		btnPaginaDoProduto2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(1).getProduto());
+				setVisible(false);
+				TelaUmProduto u = new TelaUmProduto(Dados.arrayProdutos.get(1).getProduto());
+				u.setVisible(true);
 			}
 		});
 		
@@ -190,7 +179,9 @@ public class TelaHomePage extends JFrame {
 		
 		btnPaginaDoProduto3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				PuxarUmProduto(Dados.arrayProdutos.get(2).getProduto());
+				setVisible(false);
+				TelaUmProduto u = new TelaUmProduto(Dados.arrayProdutos.get(2).getProduto());
+				u.setVisible(true);
 			}
 		});
 		
